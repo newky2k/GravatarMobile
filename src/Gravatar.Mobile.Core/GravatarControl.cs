@@ -4,6 +4,7 @@ using System.IO;
 using System.Net;
 using System.Threading;
 using System.Runtime.Serialization.Json;
+using System.Net.Http;
 
 namespace GravatarMobile.Core
 {
@@ -37,37 +38,17 @@ namespace GravatarMobile.Core
         /// <param name="Size">Size.</param>
         public async static Task<Byte[]> GetImage(String Hash, int Size)
         {
+            var hClient = new  HttpClient();
             var qs = BuildQueryString(Size);
 
             var aURl = String.Format("{0}{1}{2}", kAvatarUrl, Hash, qs);
-            var item = await Task.Run<Byte[]>(() =>
-            {
-                var req = WebRequest.CreateHttp(aURl);
-                //breq.Accept = "application/json";
-                Byte[] result = default( Byte[]);
-                var waiter = new ManualResetEvent(false);
-                req.BeginGetResponse(cb =>
-                {
-                    var cbreq = cb.AsyncState as WebRequest;
-                    var resp = cbreq.EndGetResponse(cb);
-                    using (var strm = resp.GetResponseStream())
-                    {
-                        var byteArray = new Byte[strm.Length];
-                        strm.Read(byteArray, 0, (int)strm.Length);
+            var result = await hClient.GetStreamAsync(aURl);
 
-                        result = byteArray;
-                    }
-                    waiter.Set();
-                }, req);
-                waiter.WaitOne();
+            var byteArray = new Byte[result.Length];
+            result.Read(byteArray, 0, (int)result.Length);
 
-                req = null;
-
-                return result;
-            });
-                
-            return item;
-
+            return byteArray;
+       
         }
         //        public async static Task<TData> DownloadJsonTheOldWay<TData>(string url)
         //        {

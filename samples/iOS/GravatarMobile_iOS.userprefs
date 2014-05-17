@@ -1,23 +1,21 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhone" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget.David Humphreys’s iPhone" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="../../src/GravatarMobile.iOS/GravatarView.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="../../src/GravatarMobile.iOS/GravatarExtensions.cs">
     <Files>
-      <File FileName="../../src/Gravatar.Mobile.Core/Gravatar.cs" Line="99" Column="42" />
-      <File FileName="../../src/Gravatar.Mobile.Core/GravatarControl.cs" Line="69" Column="9" />
-      <File FileName="GravatarMobile_iOS/ViewControllers/MainViewController.cs" Line="38" Column="30" />
-      <File FileName="../../src/GravatarMobile.iOS/GravatarExtensions.cs" Line="6" Column="26" />
-      <File FileName="GravatarMobile_iOS/AppDelegate.cs" Line="1" Column="1" />
-      <File FileName="../../src/GravatarMobile.iOS/GravatarView.cs" Line="33" Column="16" />
-      <File FileName="../../src/Gravatar.Mobile.Core/Interfaces/IGravatarView.cs" Line="11" Column="24" />
+      <File FileName="../../src/Gravatar.Mobile.Core/Gravatar.cs" Line="58" Column="28" />
+      <File FileName="../../src/Gravatar.Mobile.Core/GravatarControl.cs" Line="51" Column="8" />
+      <File FileName="GravatarMobile_iOS/Main.cs" Line="20" Column="1" />
+      <File FileName="../../src/GravatarMobile.iOS/GravatarView.cs" Line="109" Column="27" />
+      <File FileName="../../src/GravatarMobile.iOS/GravatarExtensions.cs" Line="21" Column="10" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
-          <Node name="GravatarMobile.Core" expanded="True">
-            <Node name="Interfaces" expanded="True" />
+          <Node name="GravatarMobile.Core" expanded="True" />
+          <Node name="GravatarMobile.iOS" expanded="True">
+            <Node name="GravatarExtensions.cs" selected="True" />
           </Node>
-          <Node name="GravatarMobile.iOS" expanded="True" />
-          <Node name="GravatarMobileIOS" expanded="True" selected="True">
+          <Node name="GravatarMobileIOS" expanded="True">
             <Node name="ViewControllers" expanded="True" />
           </Node>
         </State>

@@ -17,7 +17,7 @@ namespace GravatarMobile.Extensions
         /// <param name="Item">Item.</param>
         public static UIImage ImageAsUIImage(this Gravatar Item)
         {
-            return UIImage.LoadFromData(NSData.FromStream(Item.ImageAsStream));
+            return UIImage.LoadFromData(NSData.FromStream(Item.ImageAsStream), UIScreen.MainScreen.Scale);
         }
     }
 }
