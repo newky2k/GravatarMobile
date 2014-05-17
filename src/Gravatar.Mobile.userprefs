@@ -1,0 +1,13 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Gravatar.Mobile.Core/Gravatar.cs">
+    <Files>
+      <File FileName="Gravatar.Mobile.Core/Security/MD5.cs" Line="6" Column="2" />
+      <File FileName="Gravatar.Mobile.Core/Gravatar.cs" Line="50" Column="9" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
