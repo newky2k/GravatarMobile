@@ -14,12 +14,20 @@ namespace GravatarMobile_iOS.ViewControllers
 	{
 		[Outlet]
 		MonoTouch.UIKit.UIButton btnGo { get; set; }
+
+		[Outlet]
+		MonoTouch.UIKit.UIImageView imgGravatar { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
 			if (btnGo != null) {
 				btnGo.Dispose ();
 				btnGo = null;
+			}
+
+			if (imgGravatar != null) {
+				imgGravatar.Dispose ();
+				imgGravatar = null;
 			}
 		}
 	}

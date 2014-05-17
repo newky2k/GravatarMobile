@@ -1,8 +1,10 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhoneRetina4.7.1" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="../../src/Gravatar.Mobile.Core/Gravatar.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="GravatarMobile_iOS/ViewControllers/MainViewController.cs">
     <Files>
-      <File FileName="../../src/Gravatar.Mobile.Core/Gravatar.cs" Line="52" Column="9" />
+      <File FileName="../../src/Gravatar.Mobile.Core/Gravatar.cs" Line="76" Column="10" />
+      <File FileName="../../src/Gravatar.Mobile.Core/GravatarControl.cs" Line="54" Column="1" />
+      <File FileName="GravatarMobile_iOS/ViewControllers/MainViewController.cs" Line="39" Column="41" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

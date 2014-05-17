@@ -24,14 +24,22 @@ namespace GravatarMobile_iOS.ViewControllers
         {
             base.ViewDidLoad();
 			
-            btnGo.TouchUpInside += (object sender, EventArgs e) =>
+            btnGo.TouchUpInside += async (object sender, EventArgs e) =>
             {
                 var newAvatar = new Gravatar(@"newky2k@mac.com");
 
                 var aString = newAvatar.Hash;
 
                 Console.WriteLine(newAvatar.Hash);
+
+                await newAvatar.LoadImage();
+
+                var img = UIImage.LoadFromData(NSData.FromStream(newAvatar.ImageAsStream));
+
+                imgGravatar.Image = img;
+
             };
+
             // Perform any additional setup after loading the view, typically from a nib.
         }
     }

@@ -1,5 +1,8 @@
 ﻿using System;
 using GravatarMobile.Core.Security;
+using System.Threading.Tasks;
+using System.Diagnostics;
+using System.IO;
 
 namespace GravatarMobile.Core
 {
@@ -11,6 +14,7 @@ namespace GravatarMobile.Core
         #region fields
 
         private String mEmail;
+        private Byte[] mResult;
 
         #endregion
 
@@ -45,6 +49,51 @@ namespace GravatarMobile.Core
                 return MD5.GetHashString(gravEmail).ToLower();
 
             }
+        }
+
+        /// <summary>
+        /// Image
+        /// </summary>
+        /// <value>The image.</value>
+        public Byte[] Image
+        {
+            get
+            {
+                if (mResult == null)
+                {
+                    throw new Exception("Image not set try LoadImage");
+                }
+
+                return mResult;
+            }
+        }
+
+        /// <summary>
+        /// Gets the image as a stream
+        /// </summary>
+        /// <value>The image.</value>
+        public MemoryStream ImageAsStream
+        {
+            get
+            {
+                return new MemoryStream(Image);
+            }
+        }
+
+        #endregion
+
+        #region Methods
+
+        /// <summary>
+        /// Loads the image.
+        /// </summary>
+        /// <returns>The image.</returns>
+        public async Task LoadImage()
+        {
+
+            mResult = await GravatarControl.GetImage(Hash);
+
+
         }
 
         #endregion
