@@ -16,7 +16,10 @@ namespace GravatarMobile_iOS.ViewControllers
 		MonoTouch.UIKit.UIButton btnGo { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UIImageView imgGravatar { get; set; }
+		MonoTouch.UIKit.UITextField edtEmail { get; set; }
+
+		[Outlet]
+		GravatarMobile.iOS.GravatarView imgGravatar { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
@@ -28,6 +31,11 @@ namespace GravatarMobile_iOS.ViewControllers
 			if (imgGravatar != null) {
 				imgGravatar.Dispose ();
 				imgGravatar = null;
+			}
+
+			if (edtEmail != null) {
+				edtEmail.Dispose ();
+				edtEmail = null;
 			}
 		}
 	}

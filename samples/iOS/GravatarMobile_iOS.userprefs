@@ -1,11 +1,28 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhoneRetina4.7.1" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="GravatarMobile_iOS/ViewControllers/MainViewController.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhone" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget.David Humphreys’s iPhone" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="../../src/GravatarMobile.iOS/GravatarView.cs">
     <Files>
-      <File FileName="../../src/Gravatar.Mobile.Core/Gravatar.cs" Line="76" Column="10" />
-      <File FileName="../../src/Gravatar.Mobile.Core/GravatarControl.cs" Line="54" Column="1" />
-      <File FileName="GravatarMobile_iOS/ViewControllers/MainViewController.cs" Line="39" Column="41" />
+      <File FileName="../../src/Gravatar.Mobile.Core/Gravatar.cs" Line="99" Column="42" />
+      <File FileName="../../src/Gravatar.Mobile.Core/GravatarControl.cs" Line="69" Column="9" />
+      <File FileName="GravatarMobile_iOS/ViewControllers/MainViewController.cs" Line="38" Column="30" />
+      <File FileName="../../src/GravatarMobile.iOS/GravatarExtensions.cs" Line="6" Column="26" />
+      <File FileName="GravatarMobile_iOS/AppDelegate.cs" Line="1" Column="1" />
+      <File FileName="../../src/GravatarMobile.iOS/GravatarView.cs" Line="33" Column="16" />
+      <File FileName="../../src/Gravatar.Mobile.Core/Interfaces/IGravatarView.cs" Line="11" Column="24" />
     </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State expanded="True">
+          <Node name="GravatarMobile.Core" expanded="True">
+            <Node name="Interfaces" expanded="True" />
+          </Node>
+          <Node name="GravatarMobile.iOS" expanded="True" />
+          <Node name="GravatarMobileIOS" expanded="True" selected="True">
+            <Node name="ViewControllers" expanded="True" />
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />

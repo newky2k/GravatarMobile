@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GravatarMobile_iOS", "GravatarMobile_iOS\GravatarMobile_iOS.csproj", "{28C08157-9142-4152-881E-10A031162DC4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GravatarMobileIOS", "GravatarMobile_iOS\GravatarMobileIOS.csproj", "{28C08157-9142-4152-881E-10A031162DC4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GravatarMobile.Core", "..\..\src\Gravatar.Mobile.Core\GravatarMobile.Core.csproj", "{C56EE328-00D6-4585-B0B5-C74CDDE9E1FC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GravatarMobile.iOS", "..\..\src\GravatarMobile.iOS\GravatarMobile.iOS.csproj", "{13891A13-8DB6-41E6-AA1E-0B140A1F4002}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,18 @@ Global
 		AppStore|iPhone = AppStore|iPhone
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{13891A13-8DB6-41E6-AA1E-0B140A1F4002}.Ad-Hoc|iPhone.ActiveCfg = Release|Any CPU
+		{13891A13-8DB6-41E6-AA1E-0B140A1F4002}.Ad-Hoc|iPhone.Build.0 = Release|Any CPU
+		{13891A13-8DB6-41E6-AA1E-0B140A1F4002}.AppStore|iPhone.ActiveCfg = Release|Any CPU
+		{13891A13-8DB6-41E6-AA1E-0B140A1F4002}.AppStore|iPhone.Build.0 = Release|Any CPU
+		{13891A13-8DB6-41E6-AA1E-0B140A1F4002}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{13891A13-8DB6-41E6-AA1E-0B140A1F4002}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{13891A13-8DB6-41E6-AA1E-0B140A1F4002}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{13891A13-8DB6-41E6-AA1E-0B140A1F4002}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{13891A13-8DB6-41E6-AA1E-0B140A1F4002}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{13891A13-8DB6-41E6-AA1E-0B140A1F4002}.Release|iPhone.Build.0 = Release|Any CPU
+		{13891A13-8DB6-41E6-AA1E-0B140A1F4002}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{13891A13-8DB6-41E6-AA1E-0B140A1F4002}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 		{28C08157-9142-4152-881E-10A031162DC4}.Ad-Hoc|iPhone.ActiveCfg = Ad-Hoc|iPhone
 		{28C08157-9142-4152-881E-10A031162DC4}.Ad-Hoc|iPhone.Build.0 = Ad-Hoc|iPhone
 		{28C08157-9142-4152-881E-10A031162DC4}.AppStore|iPhone.ActiveCfg = AppStore|iPhone
@@ -41,6 +55,6 @@ Global
 		{C56EE328-00D6-4585-B0B5-C74CDDE9E1FC}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = GravatarMobile_iOS\GravatarMobile_iOS.csproj
+		StartupItem = GravatarMobile_iOS\GravatarMobileIOS.csproj
 	EndGlobalSection
 EndGlobal

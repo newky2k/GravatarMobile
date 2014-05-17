@@ -90,10 +90,17 @@ namespace GravatarMobile.Core
         /// <returns>The image.</returns>
         public async Task LoadImage()
         {
+            mResult = await GravatarControl.GetImage(Hash, 80);
+        }
 
-            mResult = await GravatarControl.GetImage(Hash);
-
-
+        /// <summary>
+        /// Loads the image and specify thee
+        /// </summary>
+        /// <returns>The image.</returns>
+        /// <param name="Size">Size.</param>
+        public async Task LoadImage(int Size)
+        {
+            mResult = await GravatarControl.GetImage(Hash, Size);
         }
 
         #endregion
