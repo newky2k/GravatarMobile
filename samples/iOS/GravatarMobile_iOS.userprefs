@@ -1,26 +1,9 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhone" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget.David Humphreys’s iPhone" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="../../src/GravatarMobile.iOS/GravatarExtensions.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhoneRetina.7.1" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="GravatarMobile_iOS/ViewControllers/MainViewController.cs">
     <Files>
-      <File FileName="../../src/Gravatar.Mobile.Core/Gravatar.cs" Line="58" Column="28" />
-      <File FileName="../../src/Gravatar.Mobile.Core/GravatarControl.cs" Line="51" Column="8" />
-      <File FileName="GravatarMobile_iOS/Main.cs" Line="20" Column="1" />
-      <File FileName="../../src/GravatarMobile.iOS/GravatarView.cs" Line="109" Column="27" />
-      <File FileName="../../src/GravatarMobile.iOS/GravatarExtensions.cs" Line="21" Column="10" />
+      <File FileName="GravatarMobile_iOS/ViewControllers/MainViewController.cs" Line="14" Column="44" />
     </Files>
-    <Pads>
-      <Pad Id="ProjectPad">
-        <State expanded="True">
-          <Node name="GravatarMobile.Core" expanded="True" />
-          <Node name="GravatarMobile.iOS" expanded="True">
-            <Node name="GravatarExtensions.cs" selected="True" />
-          </Node>
-          <Node name="GravatarMobileIOS" expanded="True">
-            <Node name="ViewControllers" expanded="True" />
-          </Node>
-        </State>
-      </Pad>
-    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />

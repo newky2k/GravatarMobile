@@ -13,7 +13,13 @@ namespace GravatarMobile_iOS.ViewControllers
 	partial class MainViewController
 	{
 		[Outlet]
+		MonoTouch.UIKit.UIButton btnCircle { get; set; }
+
+		[Outlet]
 		MonoTouch.UIKit.UIButton btnGo { get; set; }
+
+		[Outlet]
+		MonoTouch.UIKit.UIButton btnSquare { get; set; }
 
 		[Outlet]
 		MonoTouch.UIKit.UITextField edtEmail { get; set; }
@@ -28,14 +34,24 @@ namespace GravatarMobile_iOS.ViewControllers
 				btnGo = null;
 			}
 
-			if (imgGravatar != null) {
-				imgGravatar.Dispose ();
-				imgGravatar = null;
-			}
-
 			if (edtEmail != null) {
 				edtEmail.Dispose ();
 				edtEmail = null;
+			}
+
+			if (btnCircle != null) {
+				btnCircle.Dispose ();
+				btnCircle = null;
+			}
+
+			if (btnSquare != null) {
+				btnSquare.Dispose ();
+				btnSquare = null;
+			}
+
+			if (imgGravatar != null) {
+				imgGravatar.Dispose ();
+				imgGravatar = null;
 			}
 		}
 	}

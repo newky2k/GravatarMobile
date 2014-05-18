@@ -11,6 +11,7 @@ namespace GravatarMobile_iOS.ViewControllers
     {
         public MainViewController() : base("MainViewController", null)
         {
+            this.Title = "Gravatar Sample";
         }
 
         public override void DidReceiveMemoryWarning()
@@ -38,6 +39,17 @@ namespace GravatarMobile_iOS.ViewControllers
                 imgGravatar.Avatar = new Gravatar(edtEmail.Text);
 
             };
+
+            btnCircle.TouchUpInside += (object sender, EventArgs e) =>
+            {
+                imgGravatar.ViewStyle = GravatarMobile.Core.Data.Enums.GravatarViewStyle.Round;
+            };
+
+            btnSquare.TouchUpInside += (object sender, EventArgs e) =>
+            {
+                imgGravatar.ViewStyle = GravatarMobile.Core.Data.Enums.GravatarViewStyle.Square;
+            };
+
                 
         }
     }

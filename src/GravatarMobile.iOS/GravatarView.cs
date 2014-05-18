@@ -5,6 +5,9 @@ using MonoTouch.Foundation;
 using GravatarMobile.Core.Interfaces;
 using GravatarMobile.Core;
 using GravatarMobile.Extensions;
+using MonoTouch.CoreAnimation;
+using MonoTouch.CoreGraphics;
+using GravatarMobile.Core.Data;
 
 namespace GravatarMobile.iOS
 {
@@ -15,6 +18,10 @@ namespace GravatarMobile.iOS
 
         private Gravatar mItem;
         private UIImageView mImageView;
+        private float mBorderWidth = 1;
+        private Enums.GravatarViewStyle mStyle = Enums.GravatarViewStyle.Square;
+        private CAShapeLayer mMaskLayer;
+        private CAShapeLayer mBorderLayer;
 
         #endregion
 
@@ -37,6 +44,46 @@ namespace GravatarMobile.iOS
                     mItem = value;
 
                     LoadImage();
+
+                    this.SetNeedsLayout();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the width of the border.
+        /// </summary>
+        /// <value>The width of the border.</value>
+        public float BorderWidth
+        {
+            get { return mBorderWidth; }
+            set
+            { 
+                if (mBorderWidth != value)
+                {
+                    mBorderWidth = value;
+                    this.SetNeedsLayout();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the view style.
+        /// </summary>
+        /// <value>The view style.</value>
+        public Enums.GravatarViewStyle ViewStyle
+        {
+            get
+            {
+                return mStyle;
+            }
+            set
+            {
+                if (mStyle != value)
+                {
+                    mStyle = value;
+
+                    this.SetNeedsLayout();
                 }
             }
         }
@@ -93,6 +140,9 @@ namespace GravatarMobile.iOS
 
         #region Methods
 
+        /// <summary>
+        /// Prepare this instance.
+        /// </summary>
         private void Prepare()
         {
             mImageView = new UIImageView(RectangleF.Empty);
@@ -130,6 +180,67 @@ namespace GravatarMobile.iOS
             base.LayoutSubviews();
 
             mImageView.Frame = this.Bounds;
+
+            AddMask(this.Frame);
+        }
+
+        /// <summary>
+        /// Adds the mask.
+        /// </summary>
+        /// <param name="MaskBounds">Mask bounds.</param>
+        private void AddMask(RectangleF MaskBounds)
+        {
+            //clear old layers
+            if (mBorderLayer != null)
+            {
+                mBorderLayer.RemoveFromSuperLayer();
+            }
+
+            this.Layer.Mask = null;
+
+            switch (mStyle)
+            {
+                case Enums.GravatarViewStyle.Square:
+                    {
+                        if ((int)this.BorderWidth > 0)
+                        {
+
+                        }
+                    }
+                    break;
+                case Enums.GravatarViewStyle.Round:
+                    {
+                        mMaskLayer = new CAShapeLayer();
+
+                        var maskPath = CGPath.EllipseFromRect(MaskBounds, CGAffineTransform.MakeIdentity());
+
+                        mMaskLayer.Bounds = MaskBounds;
+                        mMaskLayer.Path = maskPath;
+                        mMaskLayer.FillColor = UIColor.Blue.CGColor;
+
+                        var point = new PointF(MaskBounds.Size.Width / 2, MaskBounds.Size.Height / 2);
+                        mMaskLayer.Position = point;
+
+                        this.Layer.Mask = mMaskLayer;
+
+
+                        if ((int)this.BorderWidth > 0)
+                        {
+                            mBorderLayer = (CAShapeLayer)CAShapeLayer.Create();
+                            mBorderLayer.Bounds = MaskBounds;
+                            mBorderLayer.Path = maskPath;
+                            mBorderLayer.LineWidth = this.BorderWidth * 2.0f;
+                            mBorderLayer.StrokeColor = UIColor.Black.CGColor;
+                            mBorderLayer.FillColor = UIColor.Clear.CGColor;
+                            mBorderLayer.Position = point;
+
+                            this.Layer.AddSublayer(mBorderLayer);
+                        }
+                    }
+                    break;
+            }
+
+
         }
 
         #endregion
