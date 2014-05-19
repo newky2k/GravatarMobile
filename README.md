@@ -5,3 +5,5 @@ Gravatar.Mobile will provide a PCL library for interacting with the gravatar API
 **Features**
 
 * Cross platform API library
+* Pre-build Content Views/Controls for iOS, Android and Windows Phone
+* Async support
