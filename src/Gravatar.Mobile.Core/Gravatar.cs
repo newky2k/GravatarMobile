@@ -15,6 +15,7 @@ namespace GravatarMobile.Core
 
         private String mEmail;
         private Byte[] mResult;
+		private GravatarProfile mProfile;
 
         #endregion
 
@@ -44,6 +45,7 @@ namespace GravatarMobile.Core
         {
             get
             {
+
                 var gravEmail = Email.ToLower().Trim();
 
                 return MD5.GetHashString(gravEmail).ToLower();
@@ -80,9 +82,32 @@ namespace GravatarMobile.Core
             }
         }
 
+		/// <summary>
+		/// Gets the profile.
+		/// </summary>
+		/// <value>The profile.</value>
+		public GravatarProfile Profile
+		{
+			get
+			{
+				if (mProfile == null)
+				{
+					throw new Exception("Profile not set try LoadProfile");
+				}
+				return mProfile;
+			}
+		}
         #endregion
 
         #region Methods
+		/// <summary>
+		/// Setup this instance.
+		/// </summary>
+		private async void Setup()
+		{
+			await LoadImage();
+			await LoadProfile();
+		}
 
         /// <summary>
         /// Loads the image.
@@ -103,6 +128,14 @@ namespace GravatarMobile.Core
             mResult = await GravatarControl.GetImage(Hash, Size);
         }
 
+		/// <summary>
+		/// Loads the profile.
+		/// </summary>
+		/// <returns>The profile.</returns>
+		public async Task LoadProfile()
+		{
+			mProfile = await GravatarControl.GetProfile(Hash);
+		}
         #endregion
 
         #region Constuctor
@@ -111,9 +144,13 @@ namespace GravatarMobile.Core
         /// Initializes a new instance of the <see cref="GravatarMobile.Core.Gravatar"/> class.
         /// </summary>
         /// <param name="Email">Email.</param>
-        public Gravatar(String Email)
+		public Gravatar(String Email)
         {
+			if (String.IsNullOrWhiteSpace(Email))
+				throw new Exception("Email has not been set");
             mEmail = Email;
+
+			Setup();
         }
 
         #endregion

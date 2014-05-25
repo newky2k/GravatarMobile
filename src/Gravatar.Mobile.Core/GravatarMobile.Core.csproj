@@ -36,12 +36,22 @@
     <Compile Include="Security\MD5.cs" />
     <Compile Include="Interfaces\IGravatarView.cs" />
     <Compile Include="Data\Enums.cs" />
+    <Compile Include="GravatarProfile.cs" />
+    <Compile Include="Response\ProfileResponse.cs" />
+    <Compile Include="Data\GravatarImage.cs" />
+    <Compile Include="Data\GravatarName.cs" />
+    <Compile Include="Data\GravatarUrl.cs" />
+    <Compile Include="Data\GravatarBackground.cs" />
+    <Compile Include="Data\GravatarEmail.cs" />
+    <Compile Include="Data\GravatarIMAddress.cs" />
+    <Compile Include="Data\GravatarPhone.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <ItemGroup>
     <Folder Include="Security\" />
     <Folder Include="Interfaces\" />
     <Folder Include="Data\" />
+    <Folder Include="Response\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

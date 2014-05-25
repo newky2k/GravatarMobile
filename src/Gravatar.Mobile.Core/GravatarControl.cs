@@ -5,6 +5,8 @@ using System.Net;
 using System.Threading;
 using System.Runtime.Serialization.Json;
 using System.Net.Http;
+using System.Xml.Serialization;
+using GravatarMobile.Core.Response;
 
 namespace GravatarMobile.Core
 {
@@ -16,6 +18,7 @@ namespace GravatarMobile.Core
         #region Constants
 
         private const string kAvatarUrl = @"http://www.gravatar.com/avatar/";
+		private const string kProfileUrl = @"http://en.gravatar.com/";
 
         #endregion
 
@@ -46,10 +49,32 @@ namespace GravatarMobile.Core
 
             var byteArray = new Byte[result.Length];
             result.Read(byteArray, 0, (int)result.Length);
-
+		
             return byteArray;
        
         }
+
+		/// <summary>
+		/// Gets the profile.
+		/// </summary>
+		/// <returns>The profile.</returns>
+		/// <param name="Hash">Hash.</param>
+		public async static Task<GravatarProfile> GetProfile(String Hash)
+		{
+			var hClient = new  HttpClient();
+			var aURl = String.Format("{0}{1}.xml", kProfileUrl, Hash);
+			var result = await hClient.GetStreamAsync(aURl);
+
+			if (result == null) 
+				return null;
+
+			var xml = new XmlSerializer(typeof(ProfileResponse));
+			var outPut = (ProfileResponse)xml.Deserialize(result);
+
+			var aProfile = outPut.Profile;
+
+			return aProfile;
+		}
         //        public async static Task<TData> DownloadJsonTheOldWay<TData>(string url)
         //        {
         //            return await Task.Run(() =>
