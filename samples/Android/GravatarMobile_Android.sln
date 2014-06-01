@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GravatarMobile_Android", "GravatarMobile_Android.csproj", "{AF4D0F01-C839-42C4-91D0-E322652C48EC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GravatarMobile.Core", "..\..\src\Gravatar.Mobile.Core\GravatarMobile.Core.csproj", "{C56EE328-00D6-4585-B0B5-C74CDDE9E1FC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GravatarMobile.Android", "..\..\src\GravatarMobile.Android\GravatarMobile.Android.csproj", "{0B0A7F8D-216C-4665-91BF-FD7D21FAC0E6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0B0A7F8D-216C-4665-91BF-FD7D21FAC0E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B0A7F8D-216C-4665-91BF-FD7D21FAC0E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B0A7F8D-216C-4665-91BF-FD7D21FAC0E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B0A7F8D-216C-4665-91BF-FD7D21FAC0E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF4D0F01-C839-42C4-91D0-E322652C48EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF4D0F01-C839-42C4-91D0-E322652C48EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF4D0F01-C839-42C4-91D0-E322652C48EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF4D0F01-C839-42C4-91D0-E322652C48EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C56EE328-00D6-4585-B0B5-C74CDDE9E1FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C56EE328-00D6-4585-B0B5-C74CDDE9E1FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C56EE328-00D6-4585-B0B5-C74CDDE9E1FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C56EE328-00D6-4585-B0B5-C74CDDE9E1FC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = GravatarMobile_Android.csproj
+	EndGlobalSection
+EndGlobal

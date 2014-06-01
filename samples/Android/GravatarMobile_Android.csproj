@@ -4,16 +4,18 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <ProjectGuid>{0B0A7F8D-216C-4665-91BF-FD7D21FAC0E6}</ProjectGuid>
+    <ProjectGuid>{AF4D0F01-C839-42C4-91D0-E322652C48EC}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>GravatarMobile.Android</RootNamespace>
+    <RootNamespace>GravatarMobile_Android</RootNamespace>
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <AndroidResgenClass>Resource</AndroidResgenClass>
     <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
-    <AndroidUseLatestPlatformSdk>False</AndroidUseLatestPlatformSdk>
-    <AssemblyName>GravatarMobile.Android</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <AndroidApplication>True</AndroidApplication>
+    <AndroidUseLatestPlatformSdk>True</AndroidUseLatestPlatformSdk>
+    <AssemblyName>GravatarMobile_Android</AssemblyName>
+    <TargetFrameworkVersion>v4.4</TargetFrameworkVersion>
+    <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -42,20 +44,29 @@
     <Reference Include="Mono.Android" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
-    <Compile Include="GravatarView.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
+    <None Include="Assets\AboutAssets.txt" />
+    <None Include="Properties\AndroidManifest.xml" />
   </ItemGroup>
   <ItemGroup>
+    <AndroidResource Include="Resources\layout\Main.axml" />
     <AndroidResource Include="Resources\values\Strings.xml" />
+    <AndroidResource Include="Resources\drawable\Icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>
-    <ProjectReference Include="..\Gravatar.Mobile.Core\GravatarMobile.Core.csproj">
+    <ProjectReference Include="..\..\src\Gravatar.Mobile.Core\GravatarMobile.Core.csproj">
       <Project>{C56EE328-00D6-4585-B0B5-C74CDDE9E1FC}</Project>
       <Name>GravatarMobile.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\GravatarMobile.Android\GravatarMobile.Android.csproj">
+      <Project>{0B0A7F8D-216C-4665-91BF-FD7D21FAC0E6}</Project>
+      <Name>GravatarMobile.Android</Name>
     </ProjectReference>
   </ItemGroup>
 </Project>
