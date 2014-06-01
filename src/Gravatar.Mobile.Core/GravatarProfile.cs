@@ -115,6 +115,10 @@ namespace GravatarMobile.Core
 		/// <value>The phone numbers.</value>
 		[XmlElement(ElementName="phoneNumbers")]
 		public List<GravatarPhone> PhoneNumbers {get; set;}
+
+		[XmlElement(ElementName="accounts")]
+		public List<GravatarAccount> VerifiedServices {get; set;}
+
 		#endregion
 
 		#region Constructors

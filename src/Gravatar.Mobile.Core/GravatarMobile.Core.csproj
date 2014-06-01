@@ -45,6 +45,7 @@
     <Compile Include="Data\GravatarEmail.cs" />
     <Compile Include="Data\GravatarIMAddress.cs" />
     <Compile Include="Data\GravatarPhone.cs" />
+    <Compile Include="Data\GravatarAccount.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <ItemGroup>
