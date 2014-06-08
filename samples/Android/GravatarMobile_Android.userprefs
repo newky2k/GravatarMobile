@@ -2,8 +2,10 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="../../src/GravatarMobile.Android/GravatarView.cs">
     <Files>
-      <File FileName="../../src/Gravatar.Mobile.Core/Gravatar.cs" Line="137" Column="1" />
-      <File FileName="../../src/GravatarMobile.Android/GravatarView.cs" Line="96" Column="23" />
+      <File FileName="../../src/Gravatar.Mobile.Core/Gravatar.cs" Line="66" Column="1" />
+      <File FileName="../../src/GravatarMobile.Android/GravatarView.cs" Line="152" Column="1" />
+      <File FileName="MainActivity.cs" Line="61" Column="84" />
+      <File FileName="../../src/GravatarMobile.Android/GravatarExtensions.cs" Line="30" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
