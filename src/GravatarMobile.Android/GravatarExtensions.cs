@@ -19,6 +19,18 @@ namespace GravatarMobile.Droid
 
 			return new BitmapDrawable(bm);
 		}
+
+		/// <summary>
+		/// Images as bitmap.
+		/// </summary>
+		/// <returns>The as bitmap.</returns>
+		/// <param name="Item">Item.</param>
+		public static Bitmap ImageAsBitmap(this Gravatar Item)
+		{
+			var bm = BitmapFactory.DecodeStream(Item.ImageAsStream,null, null);
+
+			return bm;
+		}
 	}
 }
 

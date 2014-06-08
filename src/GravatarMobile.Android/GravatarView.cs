@@ -15,6 +15,7 @@ using GravatarMobile.Core.Interfaces;
 using GravatarMobile.Core;
 using Android.Graphics;
 using GravatarMobile.Core.Data;
+using Android.Graphics.Drawables;
 
 namespace GravatarMobile.Droid
 {
@@ -27,7 +28,6 @@ namespace GravatarMobile.Droid
 
 		private Gravatar mItem;
 		private Enums.GravatarViewStyle mStyle = Enums.GravatarViewStyle.Square;
-
 		#endregion
 		#region Properties
 		public Gravatar Avatar
@@ -64,6 +64,11 @@ namespace GravatarMobile.Droid
 				if (mStyle != value)
 				{
 					mStyle = value;
+
+					var bm =(mStyle == Enums.GravatarViewStyle.Round) ? 
+						GetOvalBitmap(mItem.ImageAsBitmap()) : mItem.ImageAsBitmap();
+
+					this.SetImageDrawable(new BitmapDrawable(bm));
 
 					this.Invalidate();
 				}
@@ -107,39 +112,39 @@ namespace GravatarMobile.Droid
 
 			this.Post(()=>
 			{
-				this.SetImageDrawable(mItem.ImageAsDrawable());
+				//mBitmap = mItem.ImageAsBitmap();
+				var bm =(mStyle == Enums.GravatarViewStyle.Round) ? 
+					GetOvalBitmap(mItem.ImageAsBitmap()) : mItem.ImageAsBitmap();
+
+				this.SetImageDrawable(new BitmapDrawable(bm));
+
 			});
 
 		}
-
-		public override void Draw (Android.Graphics.Canvas canvas)
+			
+		public Bitmap GetOvalBitmap(Bitmap bitmap) 
 		{
-			if (mStyle == Enums.GravatarViewStyle.Round)
+			Bitmap output = null;
+
+			if(bitmap != null)
 			{
-				Path path = new Path();
-				path.AddOval(new RectF(0,0, Width,Height),Path.Direction.Cw);
-				canvas.ClipPath(path);
-				canvas.DrawFilter = new PaintFlagsDrawFilter((PaintFlags)1, PaintFlags.AntiAlias);
+				output = Bitmap.CreateBitmap(bitmap.Width, bitmap.Height, Bitmap.Config.Argb8888);
+				Canvas canvas = new Canvas(output);
 
+				Paint paint = new Paint();
+				Rect rect = new Rect(0, 0, bitmap.Width, bitmap.Height);
+				RectF rectF = new RectF(rect);
 
+				paint.AntiAlias = true;
+				canvas.DrawARGB(0, 0, 0, 0);
+				paint.Color = Color.Red;
+				canvas.DrawOval(rectF, paint);
+
+				paint.SetXfermode(new PorterDuffXfermode(PorterDuff.Mode.SrcIn));
+				canvas.DrawBitmap(bitmap, rect, rect, paint);
 			}
 
-			base.Draw (canvas);
-
-		}
-
-		/**
-     *  try to add antialiasing.
-             */
-		protected override void DispatchDraw (Canvas canvas)
-		{
-			if (mStyle == Enums.GravatarViewStyle.Round)
-			{
-				canvas.DrawFilter = new PaintFlagsDrawFilter((PaintFlags)1, PaintFlags.AntiAlias);
-
-			}
-
-			base.DispatchDraw (canvas);
+			return output;
 		}
 	}
 }
