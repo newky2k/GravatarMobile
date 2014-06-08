@@ -35,7 +35,14 @@ namespace GravatarMobile.Android
 			}
 			set
 			{
-				mItem = value;
+				if (mItem != value)
+				{
+					mItem = value;
+
+					LoadImage();
+
+
+				}
 			}
 		}
 		#endregion
@@ -65,6 +72,21 @@ namespace GravatarMobile.Android
 		}
 
 		#endregion
+
+		private async void LoadImage()
+		{
+
+			var size = (this.Width > 80) ? this.Width : 80;
+		
+
+			await mItem.LoadImage((int)size);
+
+			this.Post(()=>
+			{
+				this.SetImageDrawable(mItem.ImageAsDrawable());
+			});
+
+		}
 	}
 }
 
