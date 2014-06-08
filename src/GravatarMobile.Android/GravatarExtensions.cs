@@ -3,7 +3,7 @@ using GravatarMobile.Core;
 using Android.Graphics.Drawables;
 using Android.Graphics;
 
-namespace GravatarMobile.Android
+namespace GravatarMobile.Droid
 {
 	public static class GravatarExtensions
 	{

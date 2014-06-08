@@ -13,8 +13,10 @@ using Android.Views;
 using Android.Widget;
 using GravatarMobile.Core.Interfaces;
 using GravatarMobile.Core;
+using Android.Graphics;
+using GravatarMobile.Core.Data;
 
-namespace GravatarMobile.Android
+namespace GravatarMobile.Droid
 {
 	/// <summary>
 	/// Android Gravatar View
@@ -24,6 +26,7 @@ namespace GravatarMobile.Android
 		#region Fields
 
 		private Gravatar mItem;
+		private Enums.GravatarViewStyle mStyle = Enums.GravatarViewStyle.Square;
 
 		#endregion
 		#region Properties
@@ -42,6 +45,27 @@ namespace GravatarMobile.Android
 					LoadImage();
 
 
+				}
+			}
+		}
+
+		/// <summary>
+		/// Gets or sets the view style.
+		/// </summary>
+		/// <value>The view style.</value>
+		public Enums.GravatarViewStyle ViewStyle
+		{
+			get
+			{
+				return mStyle;
+			}
+			set
+			{
+				if (mStyle != value)
+				{
+					mStyle = value;
+
+					this.Invalidate();
 				}
 			}
 		}
@@ -66,7 +90,7 @@ namespace GravatarMobile.Android
 			Initialize();
 		}
 
-		void Initialize()
+		private void Initialize ()
 		{
 
 		}
@@ -86,6 +110,36 @@ namespace GravatarMobile.Android
 				this.SetImageDrawable(mItem.ImageAsDrawable());
 			});
 
+		}
+
+		public override void Draw (Android.Graphics.Canvas canvas)
+		{
+			if (mStyle == Enums.GravatarViewStyle.Round)
+			{
+				Path path = new Path();
+				path.AddOval(new RectF(0,0, Width,Height),Path.Direction.Cw);
+				canvas.ClipPath(path);
+				canvas.DrawFilter = new PaintFlagsDrawFilter((PaintFlags)1, PaintFlags.AntiAlias);
+
+
+			}
+
+			base.Draw (canvas);
+
+		}
+
+		/**
+     *  try to add antialiasing.
+             */
+		protected override void DispatchDraw (Canvas canvas)
+		{
+			if (mStyle == Enums.GravatarViewStyle.Round)
+			{
+				canvas.DrawFilter = new PaintFlagsDrawFilter((PaintFlags)1, PaintFlags.AntiAlias);
+
+			}
+
+			base.DispatchDraw (canvas);
 		}
 	}
 }

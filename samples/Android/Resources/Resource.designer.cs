@@ -26,7 +26,7 @@ namespace GravatarMobile_Android
 		
 		public static void UpdateIdValues()
 		{
-			global::GravatarMobile.Android.Resource.String.library_name = global::GravatarMobile_Android.Resource.String.library_name;
+			global::GravatarMobile.Droid.Resource.String.library_name = global::GravatarMobile_Android.Resource.String.library_name;
 		}
 		
 		public partial class Attribute

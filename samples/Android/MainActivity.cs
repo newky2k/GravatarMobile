@@ -6,7 +6,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
-using GravatarMobile.Android;
+using GravatarMobile.Droid;
 using GravatarMobile.Core;
 
 namespace GravatarMobile_Android
@@ -27,8 +27,13 @@ namespace GravatarMobile_Android
 			SetContentView(Resource.Layout.Main);
 
 			edtEmail = this.FindViewById<EditText>(Resource.Id.edtEmail);
+
+			edtEmail.Text = "newky2k@mac.com";
+
 			imgGravatar = this.FindViewById<GravatarView>(Resource.Id.imgGravatar);
 			var btnLoad = this.FindViewById<Button>(Resource.Id.btnLoad);
+			var btnSquare = this.FindViewById<Button>(Resource.Id.btnSquare);
+			var btnCircle = this.FindViewById<Button>(Resource.Id.btnCircle);
 
 			btnLoad.Click += (object sender, EventArgs e) => 
 			{
@@ -46,6 +51,15 @@ namespace GravatarMobile_Android
 				}
 			};
 
+			btnCircle.Click += (object sender, EventArgs e) => 
+			{
+				imgGravatar.ViewStyle = GravatarMobile.Core.Data.Enums.GravatarViewStyle.Round;
+			};
+
+			btnSquare.Click += (object sender, EventArgs e) => 
+			{
+				imgGravatar.ViewStyle = GravatarMobile.Core.Data.Enums.GravatarViewStyle.Square;
+			};
 		}
 
 		void handllerNotingButton (object sender, DialogClickEventArgs e)
