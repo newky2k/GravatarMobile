@@ -32,9 +32,9 @@
             android:layout_height="wrap_content"
             android:id="@+id/btnSquare" />
     </LinearLayout>
-    <gravatarmobile.ios.GravatarMobile
+    <gravatarmobile.android.GravatarView
         android:src="@android:drawable/ic_menu_gallery"
         android:layout_width="192dp"
         android:layout_height="192dp"
-        android:id="@+id/imageView1" />
+        android:id="@+id/imgGravatar" />
 </LinearLayout>

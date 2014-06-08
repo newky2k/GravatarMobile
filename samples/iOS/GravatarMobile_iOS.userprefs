@@ -1,12 +1,12 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhoneRetina.7.1" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="../../src/Gravatar.Mobile.Core/GravatarControl.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="GravatarMobile_iOS/ViewControllers/MainViewController.cs">
     <Files>
-      <File FileName="GravatarMobile_iOS/ViewControllers/MainViewController.cs" Line="25" Column="43" />
-      <File FileName="GravatarMobile_iOS/Main.cs" Line="16" Column="1" />
-      <File FileName="../../src/Gravatar.Mobile.Core/GravatarProfile.cs" Line="113" Column="7" />
-      <File FileName="../../src/Gravatar.Mobile.Core/Data/GravatarImage.cs" Line="12" Column="4" />
-      <File FileName="../../src/Gravatar.Mobile.Core/Data/GravatarName.cs" Line="11" Column="1" />
+      <File FileName="GravatarMobile_iOS/ViewControllers/MainViewController.cs" Line="39" Column="1" />
+      <File FileName="GravatarMobile_iOS/Main.cs" Line="1" Column="1" />
+      <File FileName="../../src/Gravatar.Mobile.Core/GravatarProfile.cs" Line="1" Column="1" />
+      <File FileName="../../src/Gravatar.Mobile.Core/Data/GravatarImage.cs" Line="1" Column="1" />
+      <File FileName="../../src/Gravatar.Mobile.Core/Data/GravatarName.cs" Line="1" Column="1" />
       <File FileName="../../src/Gravatar.Mobile.Core/GravatarControl.cs" Line="74" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>

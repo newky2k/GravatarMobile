@@ -74,7 +74,7 @@ namespace GravatarMobile_Android
 			public const int edtEmail = 2131034112;
 			
 			// aapt resource value: 0x7f050005
-			public const int imageView1 = 2131034117;
+			public const int imgGravatar = 2131034117;
 			
 			// aapt resource value: 0x7f050001
 			public const int linearLayout1 = 2131034113;
