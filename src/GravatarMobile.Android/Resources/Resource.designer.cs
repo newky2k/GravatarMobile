@@ -27,6 +27,9 @@ namespace GravatarMobile.Droid
 		public partial class Attribute
 		{
 			
+			// aapt resource value: 0x7f010000
+			public static int initial_style = 2130771968;
+			
 			static Attribute()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
@@ -37,11 +40,30 @@ namespace GravatarMobile.Droid
 			}
 		}
 		
+		public partial class Id
+		{
+			
+			// aapt resource value: 0x7f020001
+			public static int round = 2130837505;
+			
+			// aapt resource value: 0x7f020000
+			public static int square = 2130837504;
+			
+			static Id()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Id()
+			{
+			}
+		}
+		
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f020000
-			public static int library_name = 2130837504;
+			// aapt resource value: 0x7f030000
+			public static int library_name = 2130903040;
 			
 			static String()
 			{
@@ -49,6 +71,26 @@ namespace GravatarMobile.Droid
 			}
 			
 			private String()
+			{
+			}
+		}
+		
+		public partial class Styleable
+		{
+			
+			public static int[] GravatarView = new int[]
+			{
+					2130771968};
+			
+			// aapt resource value: 0
+			public static int GravatarView_initial_style = 0;
+			
+			static Styleable()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Styleable()
 			{
 			}
 		}

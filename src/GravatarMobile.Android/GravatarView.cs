@@ -86,6 +86,10 @@ namespace GravatarMobile.Droid
 		public GravatarView(Context context, IAttributeSet attrs) :
 			base(context, attrs)
 		{
+			Android.Content.Res.TypedArray a = context.Theme.ObtainStyledAttributes(attrs, Resource.Styleable.GravatarView, 0, 0);
+			int dayStyle = a.GetInteger(Resource.Styleable.GravatarView_initial_style,0);
+			mStyle = (Enums.GravatarViewStyle)dayStyle;
+
 			Initialize();
 		}
 
