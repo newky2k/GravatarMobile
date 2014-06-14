@@ -158,7 +158,7 @@ namespace GravatarMobile.iOS
 
             size = size * UIScreen.MainScreen.Scale;
             
-            await mItem.LoadImage((int)size);
+			await mItem.LoadImageAsync((int)size);
 
             BeginInvokeOnMainThread(() =>
             {

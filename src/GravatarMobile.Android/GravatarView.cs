@@ -42,7 +42,7 @@ namespace GravatarMobile.Droid
 				{
 					mItem = value;
 
-					LoadImage();
+					LoadImageAsync();
 
 
 				}
@@ -102,13 +102,18 @@ namespace GravatarMobile.Droid
 
 		#endregion
 
-		private async void LoadImage()
+		#region Methods
+
+		/// <summary>
+		/// Loads the image async.
+		/// </summary>
+		private async void LoadImageAsync()
 		{
 
 			var size = (this.Width > 80) ? this.Width : 80;
 		
 
-			await mItem.LoadImage((int)size);
+			await mItem.LoadImageAsync((int)size);
 
 			this.Post(()=>
 			{
@@ -121,8 +126,13 @@ namespace GravatarMobile.Droid
 			});
 
 		}
-			
-		public Bitmap GetOvalBitmap(Bitmap bitmap) 
+
+		/// <summary>
+		/// Gets the oval bitmap.
+		/// </summary>
+		/// <returns>The oval bitmap.</returns>
+		/// <param name="bitmap">Bitmap.</param>
+		private Bitmap GetOvalBitmap(Bitmap bitmap) 
 		{
 			Bitmap output = null;
 
@@ -146,6 +156,8 @@ namespace GravatarMobile.Droid
 
 			return output;
 		}
+
+		#endregion
 	}
 }
 
