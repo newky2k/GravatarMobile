@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GravatarMobileIOS", "GravatarMobile_iOS\GravatarMobileIOS.csproj", "{28C08157-9142-4152-881E-10A031162DC4}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GravatarMobile.Core", "..\..\src\Gravatar.Mobile.Core\GravatarMobile.Core.csproj", "{C56EE328-00D6-4585-B0B5-C74CDDE9E1FC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GravatarMobile.iOS", "..\..\src\GravatarMobile.iOS\GravatarMobile.iOS.csproj", "{13891A13-8DB6-41E6-AA1E-0B140A1F4002}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GravatarMobileIOS", "GravatarMobileiOS\GravatarMobileIOS.csproj", "{28C08157-9142-4152-881E-10A031162DC4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -55,6 +55,6 @@ Global
 		{C56EE328-00D6-4585-B0B5-C74CDDE9E1FC}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = GravatarMobile_iOS\GravatarMobileIOS.csproj
+		StartupItem = GravatarMobileiOS\GravatarMobileIOS.csproj
 	EndGlobalSection
 EndGlobal
