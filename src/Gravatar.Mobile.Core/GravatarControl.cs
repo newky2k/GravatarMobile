@@ -7,6 +7,8 @@ using System.Runtime.Serialization.Json;
 using System.Net.Http;
 using System.Xml.Serialization;
 using GravatarMobile.Core.Response;
+using System.Xml;
+using System.Text;
 
 namespace GravatarMobile.Core
 {
@@ -47,10 +49,10 @@ namespace GravatarMobile.Core
             var aURl = String.Format("{0}{1}{2}", kAvatarUrl, Hash, qs);
             var result = await hClient.GetStreamAsync(aURl);
 
-            var byteArray = new Byte[result.Length];
-            result.Read(byteArray, 0, (int)result.Length);
-		
-            return byteArray;
+            var output = new MemoryStream();
+            await result.CopyToAsync(output);
+
+            return output.ToArray(); ;
        
         }
 
@@ -68,36 +70,21 @@ namespace GravatarMobile.Core
 			if (result == null) 
 				return null;
 
+    
+            TextReader tr = new StreamReader(result);
+            var outputString = await tr.ReadToEndAsync();
+
+            if (String.IsNullOrWhiteSpace(outputString)) 
+                return null;
+
+            var xmlStream = new MemoryStream(Encoding.UTF8.GetBytes(outputString ?? ""));
 			var xml = new XmlSerializer(typeof(ProfileResponse));
-			var outPut = (ProfileResponse)xml.Deserialize(result);
+            var outPut = (ProfileResponse)xml.Deserialize(xmlStream);
 
 			var aProfile = outPut.Profile;
 
 			return aProfile;
 		}
-        //        public async static Task<TData> DownloadJsonTheOldWay<TData>(string url)
-        //        {
-        //            return await Task.Run(() =>
-        //            {
-        //                var req = WebRequest.CreateHttp(url);
-        //                req.Accept = "application/json";
-        //                TData result = default(TData);
-        //                var waiter = new ManualResetEvent(false);
-        //                req.BeginGetResponse(cb =>
-        //                {
-        //                    var cbreq = cb.AsyncState as WebRequest;
-        //                    var resp = cbreq.EndGetResponse(cb);
-        //                    var serializer = new DataContractJsonSerializer(typeof(TData));
-        //                    using (var strm = resp.GetResponseStream())
-        //                    {
-        //                        result = (TData)serializer.ReadObject(strm);
-        //                    }
-        //                    waiter.Set();
-        //                }, req);
-        //                waiter.WaitOne();
-        //                return result;
-        //            });
-        //        }
 
         #endregion
     }

@@ -152,6 +152,10 @@
       <Project>{C56EE328-00D6-4585-B0B5-C74CDDE9E1FC}</Project>
       <Name>GravatarMobile.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\src\GravatarMobile.WP\GravatarMobile.WP.csproj">
+      <Project>{FBAA378E-0284-4E67-91BB-1EF34B221A5F}</Project>
+      <Name>GravatarMobile.WP</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).CSharp.targets" />
