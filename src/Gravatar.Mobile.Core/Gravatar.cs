@@ -147,7 +147,7 @@ namespace GravatarMobile.Core
 		public Gravatar(String Email)
         {
 			if (String.IsNullOrWhiteSpace(Email))
-				throw new Exception("Email has not been set");
+				throw new Exception("Email has not been provided");
             mEmail = Email;
 
 			Setup();
