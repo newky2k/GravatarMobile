@@ -32,8 +32,8 @@
                 <TextBox x:Name="edtEmail"/>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <Button Content="Load" Width="120" Click="OnGoClicked"/>
-                <Button Content="Square" Width="120"/>
-                <Button Content="Circle" Width="120"/>
+                <Button Content="Square" Width="120" Click="Button_Click"/>
+                <Button Content="Circle" Width="120" Click="Button_Click_1"/>
                 </StackPanel>
                 <WP:GravatarView x:Name="imgGravatar" Margin="0,10,0,0" Width="320" Height="320"/>
             </StackPanel>

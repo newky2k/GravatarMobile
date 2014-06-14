@@ -37,5 +37,17 @@ namespace GravatarMobile_WP
             }
         }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            imgGravatar.ViewStyle = GravatarMobile.Core.Data.Enums.GravatarViewStyle.Square;
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            imgGravatar.ViewStyle = GravatarMobile.Core.Data.Enums.GravatarViewStyle.Round;
+        }
+
+
+
     }
 }

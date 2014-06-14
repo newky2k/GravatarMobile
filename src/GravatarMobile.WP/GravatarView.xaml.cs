@@ -10,6 +10,7 @@ using Microsoft.Phone.Shell;
 using GravatarMobile.Core.Interfaces;
 using GravatarMobile.Core;
 using GravatarMobile.Core.Data;
+using System.Windows.Media;
 
 namespace GravatarMobile.WP
 {
@@ -59,18 +60,42 @@ namespace GravatarMobile.WP
                 if (mStyle != value)
                 {
                     mStyle = value;
+
+                    UpdateStyle();
                 }
+            }
+        }
+
+        private void UpdateStyle()
+        {
+            if (mStyle == Enums.GravatarViewStyle.Round)
+            {
+                imgAvatar.Clip = new EllipseGeometry()
+                {
+                    Center = new Point(this.Width / 2, this.Height / 2),
+                    RadiusX = this.Width / 2,
+                    RadiusY = this.Height / 2,
+                };
+            }
+            else
+            {
+                imgAvatar.Clip = null;
             }
         }
 
         #endregion
 
-
+        #region Constructors
+        /// <summary>
+        /// Constructors
+        /// </summary>
         public GravatarView()
         {
             InitializeComponent();
         }
+        #endregion
 
+        #region Private Methods
         private async void LoadImage()
         {
             var size = (this.Width > 80) ? this.Width : 80;
@@ -85,5 +110,7 @@ namespace GravatarMobile.WP
                 });
 
         }
+
+        #endregion
     }
 }
