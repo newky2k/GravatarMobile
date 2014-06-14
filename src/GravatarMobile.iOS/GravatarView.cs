@@ -8,6 +8,7 @@ using GravatarMobile.Extensions;
 using MonoTouch.CoreAnimation;
 using MonoTouch.CoreGraphics;
 using GravatarMobile.Core.Data;
+using System.ComponentModel;
 
 namespace GravatarMobile.iOS
 {
@@ -66,7 +67,9 @@ namespace GravatarMobile.iOS
                 }
             }
         }
+			
 
+		[Export("ViewStyle"), Browsable(true), DisplayNameAttribute("Intial View Style")]
         /// <summary>
         /// Gets or sets the view style.
         /// </summary>
