@@ -3,11 +3,12 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
-    <ProjectGuid>{28C08157-9142-4152-881E-10A031162DC4}</ProjectGuid>
     <ProjectTypeGuids>{6BC8ED88-2882-458C-8E55-DFD12B67127B};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <ProjectGuid>{DD1B4AA5-B87C-4150-8E46-017E02F59BA0}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>GravatarMobileiOS</RootNamespace>
+    <RootNamespace>GravatarMobile_iOS</RootNamespace>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
+    <AssemblyName>GravatarMobile_iOS</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
     <DebugSymbols>true</DebugSymbols>
@@ -21,7 +22,6 @@
     <MtouchLink>None</MtouchLink>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchDebug>true</MtouchDebug>
-    <AssemblyName>GravatarMobile_iOS</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>full</DebugType>
@@ -33,7 +33,6 @@
     <MtouchLink>None</MtouchLink>
     <ConsolePause>false</ConsolePause>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
-    <AssemblyName>GravatarMobile_iOS</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
     <DebugSymbols>true</DebugSymbols>
@@ -47,12 +46,6 @@
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchDebug>true</MtouchDebug>
     <CodesignKey>iPhone Developer</CodesignKey>
-    <IpaPackageName>
-    </IpaPackageName>
-    <AssemblyName>GravatarMobileiOS</AssemblyName>
-    <MtouchI18n>
-    </MtouchI18n>
-    <MtouchArch>ARMv7</MtouchArch>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>full</DebugType>
@@ -64,7 +57,6 @@
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <ConsolePause>false</ConsolePause>
     <CodesignKey>iPhone Developer</CodesignKey>
-    <AssemblyName>GravatarMobileiOS</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Ad-Hoc|iPhone' ">
     <DebugType>full</DebugType>
@@ -78,7 +70,6 @@
     <BuildIpa>true</BuildIpa>
     <CodesignProvision>Automatic:AdHoc</CodesignProvision>
     <CodesignKey>iPhone Distribution</CodesignKey>
-    <AssemblyName>GravatarMobileiOS</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'AppStore|iPhone' ">
     <DebugType>full</DebugType>
@@ -91,7 +82,6 @@
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <CodesignProvision>Automatic:AppStore</CodesignProvision>
     <CodesignKey>iPhone Distribution</CodesignKey>
-    <AssemblyName>GravatarMobileiOS</AssemblyName>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -114,21 +104,21 @@
       <DependentUpon>MainViewController.cs</DependentUpon>
     </Compile>
   </ItemGroup>
-  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <ProjectReference Include="..\..\..\src\Gravatar.Mobile.Core\GravatarMobile.Core.csproj">
-      <Project>{C56EE328-00D6-4585-B0B5-C74CDDE9E1FC}</Project>
-      <Name>GravatarMobile.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\src\GravatarMobile.iOS\GravatarMobile.iOS.csproj">
-      <Project>{13891A13-8DB6-41E6-AA1E-0B140A1F4002}</Project>
-      <Name>GravatarMobile.iOS</Name>
-    </ProjectReference>
+    <InterfaceDefinition Include="MainStoryboard.storyboard" />
   </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <Folder Include="ViewControllers\" />
   </ItemGroup>
   <ItemGroup>
-    <InterfaceDefinition Include="ViewControllers\MainViewController.xib" />
+    <ProjectReference Include="..\..\..\src\GravatarMobile.iOS\GravatarMobile.iOS.csproj">
+      <Project>{13891A13-8DB6-41E6-AA1E-0B140A1F4002}</Project>
+      <Name>GravatarMobile.iOS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\src\Gravatar.Mobile.Core\GravatarMobile.Core.csproj">
+      <Project>{C56EE328-00D6-4585-B0B5-C74CDDE9E1FC}</Project>
+      <Name>GravatarMobile.Core</Name>
+    </ProjectReference>
   </ItemGroup>
 </Project>

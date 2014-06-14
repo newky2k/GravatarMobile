@@ -1,9 +1,7 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="../../src/GravatarMobile.iOS/GravatarView.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhoneRetina4.7.1" />
+  <MonoDevelop.Ide.Workbench>
     <Files>
-      <File FileName="../../src/Gravatar.Mobile.Core/GravatarProfile.cs" Line="1" Column="1" />
-      <File FileName="../../src/Gravatar.Mobile.Core/GravatarControl.cs" Line="1" Column="1" />
       <File FileName="../../src/GravatarMobile.iOS/GravatarView.cs" Line="29" Column="9" />
     </Files>
   </MonoDevelop.Ide.Workbench>

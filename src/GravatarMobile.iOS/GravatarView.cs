@@ -19,7 +19,7 @@ namespace GravatarMobile.iOS
 
         private Gravatar mItem;
         private UIImageView mImageView;
-        private float mBorderWidth = 1;
+		private float mBorderWidth = 0;
         private Enums.GravatarViewStyle mStyle = Enums.GravatarViewStyle.Square;
         private CAShapeLayer mMaskLayer;
         private CAShapeLayer mBorderLayer;
@@ -51,6 +51,7 @@ namespace GravatarMobile.iOS
             }
         }
 
+		[Export("BorderWidth"), Browsable(true), DisplayNameAttribute("Border Width")]
         /// <summary>
         /// Gets or sets the width of the border.
         /// </summary>
