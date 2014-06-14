@@ -1,0 +1,37 @@
+%YAML 1.2
+---
+name: Gravatar Mobile API
+id: gravatarmobile
+publisher: DSoft Developments
+license: component/License.md
+icons: 
+  - component/gravatarmobile_128x128.png
+  - component/gravatarmobile_512x512.png
+publisher-url: http://www.dsoftonline.com
+src-url: https://github.com/newky2k/GravatarMobile
+libraries: 
+  ios: src/MessageBus/DSoft.Messaging/bin/Release/DSoft.Messaging.dll
+  android: src/MessageBus/DSoft.Messaging/bin/Release/DSoft.Messaging.dll
+  wp8: src/MessageBus/DSoft.Messaging/bin/Release/DSoft.Messaging.dll
+summary: Mobile API for Gravatar with support for images and profiles
+details: component/Details.md
+screenshots: 
+  - component/MessageBus001.png
+getting-started: component/GettingStarted.md
+version: "1.0"
+build:
+    - src/MessageBus/MessageBus.sln
+samples: 
+  - name: "iOS Sample"
+    path: samples/iOS/MessageBusiOS.sln
+    configuration: "Release|iPhone"  
+    nobuild: true
+  - name: "Android Sample"
+    path: samples/Android/MessageBoxAndroid.sln
+    configuration: "Release"  
+    nobuild: true
+  - name: "Windows Phone Sample"
+    path: samples/WindowsPhone/MessageBusWP.sln
+    configuration: "Release"  
+    nobuild: true
+...
