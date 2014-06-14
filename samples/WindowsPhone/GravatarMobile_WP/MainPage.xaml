@@ -35,7 +35,12 @@
                 <Button Content="Square" Width="120" Click="Button_Click"/>
                 <Button Content="Circle" Width="120" Click="Button_Click_1"/>
                 </StackPanel>
-                <WP:GravatarView x:Name="imgGravatar" Margin="0,10,0,0" Width="320" Height="320"/>
+                <WP:GravatarView 
+                    x:Name="imgGravatar" 
+                    Margin="0,10,0,0" 
+                    Width="320" 
+                    Height="320"
+                    IntitialViewStyle="Round"/>
             </StackPanel>
         </Grid>
 

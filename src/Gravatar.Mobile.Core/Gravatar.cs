@@ -105,15 +105,15 @@ namespace GravatarMobile.Core
 		/// </summary>
 		private async void Setup()
 		{
-			await LoadImage();
-			await LoadProfile();
+			await LoadImageAsync();
+			await LoadProfileAsync();
 		}
 
         /// <summary>
         /// Loads the image.
         /// </summary>
         /// <returns>The image.</returns>
-        public async Task LoadImage()
+        public async Task LoadImageAsync()
         {
             mResult = await GravatarControl.GetImage(Hash, 80);
         }
@@ -123,7 +123,7 @@ namespace GravatarMobile.Core
         /// </summary>
         /// <returns>The image.</returns>
         /// <param name="Size">Size.</param>
-        public async Task LoadImage(int Size)
+        public async Task LoadImageAsync(int Size)
         {
             mResult = await GravatarControl.GetImage(Hash, Size);
         }
@@ -132,7 +132,7 @@ namespace GravatarMobile.Core
 		/// Loads the profile.
 		/// </summary>
 		/// <returns>The profile.</returns>
-		public async Task LoadProfile()
+		public async Task LoadProfileAsync()
 		{
 			mProfile = await GravatarControl.GetProfile(Hash);
 		}

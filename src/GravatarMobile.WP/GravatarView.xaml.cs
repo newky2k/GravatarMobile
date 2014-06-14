@@ -16,6 +16,8 @@ namespace GravatarMobile.WP
 {
     public partial class GravatarView : UserControl, IGravatarView
     {
+        public static DependencyProperty IntitialStyleProperty = DependencyProperty.Register("IntitialStyle", typeof(Enums.GravatarViewStyle), typeof(GravatarView), null);
+
         #region Fields
 
         private Gravatar mItem;
@@ -40,8 +42,23 @@ namespace GravatarMobile.WP
                 {
                     mItem = value;
 
-                    LoadImage();
+                    LoadImageAysnc();
                 }
+            }
+        }
+
+        /// <summary>
+        /// Get the initial style
+        /// </summary>
+        public Enums.GravatarViewStyle IntitialViewStyle
+        {
+            get
+            {
+                return (Enums.GravatarViewStyle)GetValue(IntitialStyleProperty);
+            }
+            set
+            {
+                SetValue(IntitialStyleProperty, value);
             }
         }
 
@@ -96,19 +113,31 @@ namespace GravatarMobile.WP
         #endregion
 
         #region Private Methods
-        private async void LoadImage()
+        private async void LoadImageAysnc()
         {
             var size = (this.Width > 80) ? this.Width : 80;
 
-            await mItem.LoadImage((int)size);
+            await mItem.LoadImageAsync((int)size);
 
             this.Dispatcher.BeginInvoke(() =>
                 {
                     imgAvatar.Source = mItem.ImageAsBitmap();
-                   // mImageView.Image = mItem.ImageAsUIImage();
 
                 });
 
+        }
+
+        #endregion
+
+        #region Handlers
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void OnControlLoaded(object sender, RoutedEventArgs e)
+        {
+            ViewStyle = IntitialViewStyle;
         }
 
         #endregion

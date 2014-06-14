@@ -18,18 +18,15 @@ namespace GravatarMobile_WP
         public MainPage()
         {
             InitializeComponent();
-
-            // Sample code to localize the ApplicationBar
-            //BuildLocalizedApplicationBar();
-
-            edtEmail.Text = @"newky2k@mac.com";
         }
 
         private void OnGoClicked(object sender, RoutedEventArgs e)
         {
             try
             {
+                //load the gravatar based on the email address and pass it to the Gravatar View
                 imgGravatar.Avatar = new Gravatar(edtEmail.Text);
+
             }
             catch (Exception ex)
             {
