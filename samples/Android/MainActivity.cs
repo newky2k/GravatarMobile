@@ -28,7 +28,7 @@ namespace GravatarMobile_Android
 
 			edtEmail = this.FindViewById<EditText>(Resource.Id.edtEmail);
 
-			edtEmail.Text = "newky2k@mac.com";
+			edtEmail.Text = String.Empty;
 
 			imgGravatar = this.FindViewById<GravatarView>(Resource.Id.imgGravatar);
 			var btnLoad = this.FindViewById<Button>(Resource.Id.btnLoad);
