@@ -1,8 +1,8 @@
+.xpkg/
 bin
 obj
 packages
 
-
 *.userprefs
 
 *.userprefs
@@ -12,3 +12,5 @@ packages
 *.userprefs
 
 *.userprefs
+
+*.xam

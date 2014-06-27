@@ -10,9 +10,15 @@ icons:
 publisher-url: http://www.dsoftonline.com
 src-url: https://github.com/newky2k/GravatarMobile
 libraries: 
-  ios: src/MessageBus/DSoft.Messaging/bin/Release/DSoft.Messaging.dll
-  android: src/MessageBus/DSoft.Messaging/bin/Release/DSoft.Messaging.dll
-  wp8: src/MessageBus/DSoft.Messaging/bin/Release/DSoft.Messaging.dll
+  ios: 
+    - src/Gravatar.Mobile.Core/bin/Release/GravatarMobile.Core.dll
+    - src/GravatarMobile.iOS/bin/Release/GravatarMobile.iOS.dll
+  android: 
+    - src/Gravatar.Mobile.Core/bin/Release/GravatarMobile.Core.dll 
+    - src/GravatarMobile.Android/bin/Release/GravatarMobile.Android.dll
+  wp8: 
+    - src/compiled/GravatarMobile.Core.dll
+    - src/compiled/GravatarMobile.WP.dll
 summary: Mobile API for Gravatar with support for images and profiles
 details: component/Details.md
 screenshots: 
@@ -20,18 +26,18 @@ screenshots:
 getting-started: component/GettingStarted.md
 version: "1.0"
 build:
-    - src/MessageBus/MessageBus.sln
+    - src/Gravatar.Mobile.sln
 samples: 
   - name: "iOS Sample"
-    path: samples/iOS/MessageBusiOS.sln
+    path: samples/iOS/GravatarMobile-iOS.sln
     configuration: "Release|iPhone"  
     nobuild: true
   - name: "Android Sample"
-    path: samples/Android/MessageBoxAndroid.sln
+    path: samples/Android/GravatarMobile-Android.sln
     configuration: "Release"  
     nobuild: true
   - name: "Windows Phone Sample"
-    path: samples/WindowsPhone/MessageBusWP.sln
+    path: samples/WindowsPhone/GravatarMobile-WP-External.sln
     configuration: "Release"  
     nobuild: true
 ...
