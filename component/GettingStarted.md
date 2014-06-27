@@ -1,148 +1,102 @@
-
-MessageBus is a cross platform EventBus system similar to NSNoticationCenter on iOS and otto on Android that allows you to decouple your code whilst still allowing your applications components to communicate with each other.  MesssageBus can be used instead of events and can be used to communicate between objects that are not directly linked.
+Gravatar Mobile API is a cross platfrom framework for integration of Gravatar in to your mobile application.
 
 ## Usage
 
-`MessageBus.Default` provides a central Multi-thread singleton for you to subscribe to and post events.  You can use this or have multiple separate `MessageBus` objects of your own.
+A `Gravatar` object can be created by passing an email address to the constructor.
 
 
-	using DSoft.Messaging;
+	using GravatarMobile.Core;
 	...
 	
-	var newBus = new MessageBus();
-	 
-**Registering Event Handlers**
+	var aVatar = new Gravatar("someone@somewhere.com");
+	
+Once created you can call the methods to load the image and the profile in to the `Gravatar` using async calls
 
-To subscribe to an event you can create a `MessageBusEventHandler` object and then register it with the MessageBus.  The event handler allows you to set the Id of the event to subscribe to and an Action or Delegate to call be when the event occurs.
-
-	using DSoft.Messaging;
+	using GravatarMobile.Core;
 	...
 	
-	var newEvHandler = new MessageBusEventHandler()
+	var aVatar = new Gravatar("someone@somewhere.com");
+	
+	//load the default size image of 80px
+	await aVatar.LoadImageAsync();
+	
+	//load avatar of a specific size
+	await aVatar.LoadImageAsync(512);
+	
+	//load the profile
+	await aVatar.LoadProfileAsync();
+	
+
+## GravatarView
+
+On iOS, Android and windows phone we provide a `GravatarView` which implements `IGravatarView` that can display a Avatar for you.  You can simply pass a gravatar to it to load the Image, by passing it to the `Avatar` property
+
+
+	using GravatarMobile.Core;
+	...
+	
+	var aVatar = new Gravatar("someone@somewhere.com");
+	
+	//refernece the instance of GravatarView
+	gravView.Avatar = aVatar;
+	
+
+When passed in this way the image loaded from Gravatar will be set to the size of the `GravatarView` instances dimensions.
+
+You can set the style of the GravatarView to be either `Round` or `Square` using the `ViewStyle`property and you can also set the size of the border to be drawn around the image using the `BorderWidth` property
+
+**iOS**
+
+'GravatarView' on iOS will work when created programatically, from an xib and within a storyboard.
+
+You can create one programatically using the standard `Frame` based contructor after which it can be added to you view controller
+
+	using GravatarMobile.Core;
+	using GravatarMobile.iOS;
+	...
+	
+	public override void ViewDidLoad()
 	{
-		EventId = "1234",
-		Action = (sender, evnt) =>
-		{
-			//Code goes here
-		},
-	};
-	
-	MessageBus.Default.Register(newEvHandler);
+		base.ViewDidLoad();
+		
+		var gravView = new GravatarView(RectangleF.Empty);
+		
+		//refernece the instance of GravatarView
+		gravView.Avatar = new Gravatar("someone@somewhere.com");
+		
+		this.View.Add(gravView);
+		
+	}	
 
-You can then deregister an event handler or simply clear all handlers for a specific EventId
+In the iOS Storyboard designer you can access both the `ViewStyle` and `BorderWidth` properties.
 
+**Android**
 
-	using DSoft.Messaging;
-	...
+In Android you can include the `GravatarView` in your xml layout
 
-	//deregister
-	MessageBus.Default.DeRegister(newEvHandler);
-	
-	//Clear all event handlers
-	MessageBus.Default.Clear("1234");
+    <gravatarmobile.droid.GravatarView xmlns:gravview="http://schemas.android.com/apk/res-auto"
+        android:src="@android:drawable/ic_menu_gallery"
+        android:layout_width="192dp"
+        android:layout_height="192dp"
+        android:id="@+id/imgGravatar"
+        gravview:initial_style="round" />	
+        
 
-*Note: You must execute any code that updates the UI, contained within your event action or delegate, on the UI thread*
+You can also create an instance programatically and add it as a sub-view.
 
-**Posting Events**
+The `initial_style` attribute can be set to `round` or `square` to set the load style
 
-You can then post an event from anywhere in your application using the Id of the event to execute the Action in the registered `MessageBusEventHandler` objects.
+**Windows Phone**
 
-To post an event you create an instance of `CoreMessageBusEvent`, set the EventId, sender and any additional data you want to send and then call Post on the relevant MessageBus.
- 
-	using DSoft.Messaging;
-	...
-	
-	var newEvent = new CoreMessageBusEvent()
-	{
-		EventId = "1234",
-		Sender = this,
-		Data = new object[]{"This is a message"},
-	};
-	
-	MessageBus.Default.Post(newEvent);
+On windows phone you can add the `GravatarView` into your xaml definition
 
-You can also post an event with just the EventId, with the EventId and the sender or EventId, Sender and data, without creating a CoreMessageBusEvent object
-
-	using DSoft.Messaging;
+	xmlns:WP="clr-namespace:GravatarMobile.WP;assembly=GravatarMobile.WP" 
 	...
 	
-	MessageBus.Default.Post("1234");
-	MessageBus.Default.Post("1234",this);
-	MessageBus.Default.Post("1234",this, new object[]{"This is a message"});
-	
-If you are only using the default MessageBus you can post using the class methods instead.
+	   <WP:GravatarView 
+    	   x:Name="imgGravatar" 
+       	   Margin="0,10,0,0" 
+           Width="320" 
+           Height="320"
+           IntitialViewStyle="Round"/>
 
-	using DSoft.Messaging;
-	...
-	
-	var newEvent = new CoreMessageBusEvent()
-	{
-		EventId = "1234",
-		Sender = this,
-		Data = new object[]{"This is a message"},
-	};
-	
-	MessageBus.PostEvent(newEvent);
-	MessageBus.PostEvent("1234");
-	MessageBus.PostEvent("1234",this);
-	MessageBus.PostEvent("1234",this, new object[]{"This is a message"});
-
-*Note: You must execute any code that updates the UI, contained within your event action or delegate, on the UI thread*
-
-**Custom Events**	
-
-You can sub-class `MessageBusEvent` to allow you to pass additional information in the event, without having to pass it in the Data property.  
-
-You can then register for events based on the type of the event, rather than the event Id.
-
-
-	using DSoft.Messaging;
-	...
-	
-	MessageBus.Default.Register<CustomMessageBusEvent> (CustomMessageEventHandler);
-
-	MessageBus.Default.Register<CustomMessageBusEvent> ((sendr, evnt) => {
-    
-      	//code goes here
-	});
-
-You can also deregister based on type
-
-	MessageBus.Default.DeRegister<CustomMessageBusEvent> (CustomMessageEventHandler);
-
-**Excuting code on the UI Thread**
-
-When MessageBus executes your action code it will not do it on the main UI Thread.  This is to avoid blocking of the UI for long running actions or where there are lots of handlers for an event.
-
-You may wish to update you UI in the action code assigned to the Event Handler and you can do this two ways depending on where your event handler exists.
-
- - If your event handler is in "Platform" specific code you can use the current context to execute the code E.g. BeginInvokeOnMainThread(iOS), Actvity.RunOnUIThread(Android), Dispatcher.BeginInvoke(Windows Phone)
- - If your handler is in the PCL space you can use Task.Factory.StartNew and pass the current Syncronization context.  
-  
-An example of the second approach is below.
-
-	using DSoft.Messaging;
-	...
-	
-	var newEvHandler = new MessageBusEventHandler()
-	{
-		EventId = "1234",
-		Action = (sender, data) =>
-		{
-			//Code goes here
-			for (int i = 1; i <= 5; i++)
-	        {
-	            Console.WriteLine(i);
-	        }
-	        
-	        //update the UI
-	        Task.Factory.StartNew(() =>
-            {
-                this.label1.Text = "Task past first work section...";
-            }, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.FromCurrentSynchronizationContext());
-		},
-	};
-	
-	MessageBus.Default.Register(newEvHandler);
-	
- 

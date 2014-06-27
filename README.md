@@ -1,10 +1,13 @@
 # Gravatar.Mobile
 
-Gravatar.Mobile will provide a PCL library for interacting with the gravatar API as well as display components for use in Xamarin.iOS, Xamarin.Android and Windows Phone using C#.
+Gravatar Mobile API is a cross platfrom framework for integration of Gravatar in to your mobile application.
 
-**Features**
+# Features
 
-* Cross platform API library
-* Pre-build Content Views/Controls for iOS, Android and Windows Phone
-* Async support
-* Support for Images and Profiles
+* Cross platform  
+  * Works on iOS, Android, Windows Phone, Mac and Windows
+* Support for Gravatar images and profiles
+* Small footprint
+* Simple API
+* PCL core library
+* Helper libraries for iOS, Android and Windows phone with implementations of "GravatarView"
