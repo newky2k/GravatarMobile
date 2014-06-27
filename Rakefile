@@ -15,9 +15,9 @@ task :default => ".xpkg/xamarin-component.exe" do
 	line = <<-END
 	mono .xpkg/xamarin-component.exe package
 		END
-	puts "* Creating MessageBus Component"
+	puts "* Creating GravatarMobile Component"
 	puts line.strip.gsub "\t\t", "\\\n    "
 	sh line, :verbose => false
-	puts "* Created MessageBus Component"
+	puts "* Created GravatarMobile Component"
 end
 
