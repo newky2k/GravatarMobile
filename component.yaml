@@ -22,7 +22,9 @@ libraries:
 summary: Mobile API for Gravatar with support for images and profiles
 details: component/Details.md
 screenshots: 
-  - component/MessageBus001.png
+  - component/screenshot_ios.png
+  - component/screenshot_android.png
+  - component/screenshot_wp.png  
 getting-started: component/GettingStarted.md
 version: "1.0"
 build:
