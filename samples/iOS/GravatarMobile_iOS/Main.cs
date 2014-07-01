@@ -5,7 +5,7 @@ using System.Linq;
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
 
-namespace GravatarMobile_iOS
+namespace GravatarMobileForiOS
 {
 	public class Application
 	{

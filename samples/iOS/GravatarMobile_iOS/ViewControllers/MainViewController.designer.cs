@@ -9,7 +9,7 @@ using MonoTouch.Foundation;
 using MonoTouch.UIKit;
 using System.CodeDom.Compiler;
 
-namespace GravatarMobile_iOS.ViewControllers
+namespace GravatarMobileForiOS.ViewControllers
 {
 	[Register ("MainViewController")]
 	partial class MainViewController

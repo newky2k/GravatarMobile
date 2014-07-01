@@ -6,7 +6,7 @@ using MonoTouch.Foundation;
 using MonoTouch.UIKit;
 using GravatarMobile.Core;
 
-namespace GravatarMobile_iOS.ViewControllers
+namespace GravatarMobileForiOS.ViewControllers
 {
 	public partial class MainViewController : UIViewController
 	{
