@@ -1,14 +1,29 @@
 ﻿using System;
-using MonoTouch.UIKit;
 using System.Drawing;
-using MonoTouch.Foundation;
 using GravatarMobile.Core.Interfaces;
 using GravatarMobile.Core;
 using GravatarMobile.Extensions;
-using MonoTouch.CoreAnimation;
-using MonoTouch.CoreGraphics;
 using GravatarMobile.Core.Data;
 using System.ComponentModel;
+
+#if __UNIFIED__
+using UIKit;
+using Foundation;
+using CoreAnimation;
+using CoreGraphics;
+#else
+using MonoTouch.UIKit;
+using MonoTouch.Foundation;
+using MonoTouch.CoreAnimation;
+using MonoTouch.CoreGraphics;
+
+using CGRect = global::System.Drawing.RectangleF;
+using CGPoint = global::System.Drawing.PointF;
+using CGSize = global::System.Drawing.SizeF;
+using nfloat = global::System.Single;
+using nint = global::System.Int32;
+using nuint = global::System.UInt32;
+#endif
 
 namespace GravatarMobile.iOS
 {
@@ -192,7 +207,7 @@ namespace GravatarMobile.iOS
         /// Adds the mask.
         /// </summary>
         /// <param name="MaskBounds">Mask bounds.</param>
-        private void AddMask(RectangleF MaskBounds)
+        private void AddMask(CGRect MaskBounds)
         {
             //clear old layers
             if (mBorderLayer != null)
@@ -222,7 +237,7 @@ namespace GravatarMobile.iOS
                         mMaskLayer.Path = maskPath;
                         mMaskLayer.FillColor = UIColor.Blue.CGColor;
 
-                        var point = new PointF(MaskBounds.Size.Width / 2, MaskBounds.Size.Height / 2);
+                        var point = new CGPoint(MaskBounds.Size.Width / 2, MaskBounds.Size.Height / 2);
                         mMaskLayer.Position = point;
 
                         this.Layer.Mask = mMaskLayer;

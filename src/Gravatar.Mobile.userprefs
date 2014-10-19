@@ -1,13 +1,6 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="GravatarMobile.Mac/GravatarView.cs">
-    <Files>
-      <File FileName="GravatarMobile.Mac/GravatarView.cs" Line="55" Column="55" />
-      <File FileName="GravatarMobile.iOS/GravatarView.cs" Line="6" Column="6" />
-      <File FileName="GravatarMobile.iOS/GravatarExtensions.cs" Line="6" Column="6" />
-      <File FileName="GravatarMobile.Mac/GravatarExtensions.cs" Line="2" Column="2" />
-    </Files>
-  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

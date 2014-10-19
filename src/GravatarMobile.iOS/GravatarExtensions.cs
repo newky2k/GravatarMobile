@@ -1,8 +1,13 @@
 ﻿using System;
 using GravatarMobile.Core;
+
+#if __UNIFIED__
+using UIKit;
+using Foundation;
+#else
 using MonoTouch.UIKit;
 using MonoTouch.Foundation;
-
+#endif
 namespace GravatarMobile.Extensions
 {
     /// <summary>
