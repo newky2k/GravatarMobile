@@ -38,7 +38,7 @@ namespace GravatarMobile.iOS
         private Enums.GravatarViewStyle mStyle = Enums.GravatarViewStyle.Square;
         private CAShapeLayer mMaskLayer;
         private CAShapeLayer mBorderLayer;
-
+		private UIColor mBorderColor;
         #endregion
 
         #region Properties
@@ -107,6 +107,31 @@ namespace GravatarMobile.iOS
             }
         }
 
+		/// <summary>
+		/// Gets or sets the color of the border.
+		/// </summary>
+		/// <value>The color of the border.</value>
+		public UIColor BorderColor
+		{
+			get
+			{
+				if (mBorderColor == null)
+				{
+					mBorderColor = UIColor.Black;
+				}
+
+				return mBorderColor;
+			}
+			set
+			{
+				if (mBorderColor != value)
+				{
+					mBorderColor = value;
+
+					SetNeedsLayout();
+				}
+			}
+		}
         #endregion
 
         #region Constructors
@@ -223,7 +248,17 @@ namespace GravatarMobile.iOS
                     {
                         if ((int)this.BorderWidth > 0)
                         {
+							var point = new CGPoint(MaskBounds.Size.Width / 2, MaskBounds.Size.Height / 2);
+							var maskPath = CGPath.FromRect(MaskBounds);
+							mBorderLayer = (CAShapeLayer)CAShapeLayer.Create();
+							mBorderLayer.Bounds = MaskBounds;
+							mBorderLayer.Path = maskPath;
+							mBorderLayer.LineWidth = this.BorderWidth * 2.0f;
+							mBorderLayer.StrokeColor = BorderColor.CGColor;
+							mBorderLayer.FillColor = UIColor.Clear.CGColor;
+							mBorderLayer.Position = point;
 
+							this.Layer.AddSublayer(mBorderLayer);
                         }
                     }
                     break;
@@ -249,7 +284,7 @@ namespace GravatarMobile.iOS
                             mBorderLayer.Bounds = MaskBounds;
                             mBorderLayer.Path = maskPath;
                             mBorderLayer.LineWidth = this.BorderWidth * 2.0f;
-                            mBorderLayer.StrokeColor = UIColor.Black.CGColor;
+							mBorderLayer.StrokeColor = BorderColor.CGColor;
                             mBorderLayer.FillColor = UIColor.Clear.CGColor;
                             mBorderLayer.Position = point;
 

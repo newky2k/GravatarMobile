@@ -51,12 +51,19 @@ namespace GravatarMobileForiOS.ViewControllers
 			btnCircle.TouchUpInside += (object sender, EventArgs e) =>
 			{
 				this.View.EndEditing(true);
+
+				imgGravatar.BorderColor = UIColor.Gray;
+				imgGravatar.BorderWidth = 5.0f;
 				imgGravatar.ViewStyle = GravatarMobile.Core.Data.Enums.GravatarViewStyle.Round;
+
 			};
 
 			btnSquare.TouchUpInside += (object sender, EventArgs e) =>
 			{
 				this.View.EndEditing(true);
+
+				imgGravatar.BorderColor = UIColor.Green;
+				imgGravatar.BorderWidth = 2.0f;
 				imgGravatar.ViewStyle = GravatarMobile.Core.Data.Enums.GravatarViewStyle.Square;
 			};
 		}
