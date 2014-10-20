@@ -5,7 +5,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GravatarMobile.Core", "..\.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GravatarMobile.iOS", "..\..\src\GravatarMobile.iOS\GravatarMobile.iOS.csproj", "{6E0FA6BD-2B98-4CF9-A932-1078374DBC8F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GravatarMobileForiOS", "GravatarMobile_iOS\GravatarMobileForiOS.csproj", "{F10651C1-ADE0-48A2-9E29-3485C62B9816}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GravatarMobileForiOS", "GravatarMobile_iOS\GravatarMobileForiOS.csproj", "{803BA187-ECE8-4F90-AD0C-BF46854E6D39}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,6 +29,18 @@ Global
 		{6E0FA6BD-2B98-4CF9-A932-1078374DBC8F}.Release|iPhone.Build.0 = Release|Any CPU
 		{6E0FA6BD-2B98-4CF9-A932-1078374DBC8F}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
 		{6E0FA6BD-2B98-4CF9-A932-1078374DBC8F}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{803BA187-ECE8-4F90-AD0C-BF46854E6D39}.Ad-Hoc|iPhone.ActiveCfg = Ad-Hoc|iPhone
+		{803BA187-ECE8-4F90-AD0C-BF46854E6D39}.Ad-Hoc|iPhone.Build.0 = Ad-Hoc|iPhone
+		{803BA187-ECE8-4F90-AD0C-BF46854E6D39}.AppStore|iPhone.ActiveCfg = AppStore|iPhone
+		{803BA187-ECE8-4F90-AD0C-BF46854E6D39}.AppStore|iPhone.Build.0 = AppStore|iPhone
+		{803BA187-ECE8-4F90-AD0C-BF46854E6D39}.Debug|iPhone.ActiveCfg = Debug|iPhone
+		{803BA187-ECE8-4F90-AD0C-BF46854E6D39}.Debug|iPhone.Build.0 = Debug|iPhone
+		{803BA187-ECE8-4F90-AD0C-BF46854E6D39}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
+		{803BA187-ECE8-4F90-AD0C-BF46854E6D39}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
+		{803BA187-ECE8-4F90-AD0C-BF46854E6D39}.Release|iPhone.ActiveCfg = Release|iPhone
+		{803BA187-ECE8-4F90-AD0C-BF46854E6D39}.Release|iPhone.Build.0 = Release|iPhone
+		{803BA187-ECE8-4F90-AD0C-BF46854E6D39}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
+		{803BA187-ECE8-4F90-AD0C-BF46854E6D39}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
 		{C56EE328-00D6-4585-B0B5-C74CDDE9E1FC}.Ad-Hoc|iPhone.ActiveCfg = Release|Any CPU
 		{C56EE328-00D6-4585-B0B5-C74CDDE9E1FC}.Ad-Hoc|iPhone.Build.0 = Release|Any CPU
 		{C56EE328-00D6-4585-B0B5-C74CDDE9E1FC}.AppStore|iPhone.ActiveCfg = Release|Any CPU
@@ -41,18 +53,6 @@ Global
 		{C56EE328-00D6-4585-B0B5-C74CDDE9E1FC}.Release|iPhone.Build.0 = Release|Any CPU
 		{C56EE328-00D6-4585-B0B5-C74CDDE9E1FC}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
 		{C56EE328-00D6-4585-B0B5-C74CDDE9E1FC}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
-		{F10651C1-ADE0-48A2-9E29-3485C62B9816}.Ad-Hoc|iPhone.ActiveCfg = Ad-Hoc|iPhone
-		{F10651C1-ADE0-48A2-9E29-3485C62B9816}.Ad-Hoc|iPhone.Build.0 = Ad-Hoc|iPhone
-		{F10651C1-ADE0-48A2-9E29-3485C62B9816}.AppStore|iPhone.ActiveCfg = AppStore|iPhone
-		{F10651C1-ADE0-48A2-9E29-3485C62B9816}.AppStore|iPhone.Build.0 = AppStore|iPhone
-		{F10651C1-ADE0-48A2-9E29-3485C62B9816}.Debug|iPhone.ActiveCfg = Debug|iPhone
-		{F10651C1-ADE0-48A2-9E29-3485C62B9816}.Debug|iPhone.Build.0 = Debug|iPhone
-		{F10651C1-ADE0-48A2-9E29-3485C62B9816}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
-		{F10651C1-ADE0-48A2-9E29-3485C62B9816}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
-		{F10651C1-ADE0-48A2-9E29-3485C62B9816}.Release|iPhone.ActiveCfg = Release|iPhone
-		{F10651C1-ADE0-48A2-9E29-3485C62B9816}.Release|iPhone.Build.0 = Release|iPhone
-		{F10651C1-ADE0-48A2-9E29-3485C62B9816}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
-		{F10651C1-ADE0-48A2-9E29-3485C62B9816}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = GravatarMobile_iOS\GravatarMobileForiOS.csproj
