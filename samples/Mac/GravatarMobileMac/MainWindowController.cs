@@ -30,6 +30,7 @@ namespace GravatarMobileMac
 			grvAvatar.BorderWidth = 2.0f;
 
 
+
 		}
 
 		public new MainWindow Window

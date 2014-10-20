@@ -39,6 +39,7 @@ samples:
   - name: "iOS Sample"
     path: samples/iOS/GravatarMobile-iOS.sln
     configuration: "Release|iPhone"
+    nobuild: true
   - name: "iOS Classic Sample"
     path: samples/iOS/GravatarMobile-iOS-Classic.sln
     configuration: "Release|iPhone"        
@@ -49,6 +50,10 @@ samples:
     nobuild: true
   - name: "Windows Phone Sample"
     path: samples/WindowsPhone/GravatarMobile-WP-External.sln
+    configuration: "Release"  
+    nobuild: true
+  - name: "Mac Sample"
+    path: samples/Mac/GravatarMobileMac.sln
     configuration: "Release"  
     nobuild: true
 ...
