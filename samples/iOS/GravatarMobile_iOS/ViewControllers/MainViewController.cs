@@ -1,10 +1,14 @@
-﻿
-using System;
+﻿using System;
 using System.Drawing;
-
-using MonoTouch.Foundation;
-using MonoTouch.UIKit;
 using GravatarMobile.Core;
+
+#if __UNIFIED__
+using UIKit;
+using Foundation;
+#else
+using MonoTouch.UIKit;
+using MonoTouch.Foundation;
+#endif
 
 namespace GravatarMobileForiOS.ViewControllers
 {

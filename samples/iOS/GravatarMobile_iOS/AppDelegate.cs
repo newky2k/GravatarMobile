@@ -2,8 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 
-using MonoTouch.Foundation;
+#if __UNIFIED__
+using UIKit;
+using Foundation;
+#else
 using MonoTouch.UIKit;
+using MonoTouch.Foundation;
+#endif
 
 namespace GravatarMobileForiOS
 {

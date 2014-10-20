@@ -12,13 +12,19 @@ src-url: https://github.com/newky2k/GravatarMobile
 libraries: 
   ios: 
     - src/Gravatar.Mobile.Core/bin/Release/GravatarMobile.Core.dll
-    - src/GravatarMobile.iOS/bin/Release/GravatarMobile.iOS.dll
+    - src/GravatarMobile.iOS/bin/classic/Release/GravatarMobile.iOS.dll
+  ios-unified: 
+    - src/Gravatar.Mobile.Core/bin/Release/GravatarMobile.Core.dll
+    - src/GravatarMobile.iOS/bin/unified/Release/GravatarMobile.iOS.dll    
   android: 
     - src/Gravatar.Mobile.Core/bin/Release/GravatarMobile.Core.dll 
     - src/GravatarMobile.Android/bin/Release/GravatarMobile.Android.dll
   wp8: 
     - src/compiled/GravatarMobile.Core.dll
     - src/compiled/GravatarMobile.WP.dll
+  mac-unified: 
+    - src/Gravatar.Mobile.Core/bin/Release/GravatarMobile.Core.dll
+    - src/GravatarMobile.Mac/bin/Release/GravatarMobile.Mac.dll    
 summary: Mobile API for Gravatar with support for images and profiles
 details: component/Details.md
 screenshots: 
@@ -26,13 +32,16 @@ screenshots:
   - component/screenshot_android.png
   - component/screenshot_wp.png  
 getting-started: component/GettingStarted.md
-version: "1.0"
+version: "1.1"
 build:
     - src/Gravatar.Mobile.sln
 samples: 
   - name: "iOS Sample"
     path: samples/iOS/GravatarMobile-iOS.sln
-    configuration: "Release|iPhone"  
+    configuration: "Release|iPhone"
+  - name: "iOS Classic Sample"
+    path: samples/iOS/GravatarMobile-iOS-Classic.sln
+    configuration: "Release|iPhone"        
     nobuild: true
   - name: "Android Sample"
     path: samples/Android/GravatarMobile-Android.sln
