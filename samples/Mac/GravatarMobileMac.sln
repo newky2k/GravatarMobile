@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GravatarMobileMac", "GravatarMobileMac\GravatarMobileMac.csproj", "{77D654A7-2FA8-4C20-8D5A-C7C999D5EBE4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GravatarMobile.Core", "..\..\src\Gravatar.Mobile.Core\GravatarMobile.Core.csproj", "{C56EE328-00D6-4585-B0B5-C74CDDE9E1FC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GravatarMobile.Mac", "..\..\src\GravatarMobile.Mac\GravatarMobile.Mac.csproj", "{2EF00914-D16A-4F8B-AD79-32790450FA0F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+		AppStore|Any CPU = AppStore|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2EF00914-D16A-4F8B-AD79-32790450FA0F}.AppStore|Any CPU.ActiveCfg = Release|Any CPU
+		{2EF00914-D16A-4F8B-AD79-32790450FA0F}.AppStore|Any CPU.Build.0 = Release|Any CPU
+		{2EF00914-D16A-4F8B-AD79-32790450FA0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2EF00914-D16A-4F8B-AD79-32790450FA0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2EF00914-D16A-4F8B-AD79-32790450FA0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2EF00914-D16A-4F8B-AD79-32790450FA0F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77D654A7-2FA8-4C20-8D5A-C7C999D5EBE4}.AppStore|Any CPU.ActiveCfg = AppStore|Any CPU
+		{77D654A7-2FA8-4C20-8D5A-C7C999D5EBE4}.AppStore|Any CPU.Build.0 = AppStore|Any CPU
+		{77D654A7-2FA8-4C20-8D5A-C7C999D5EBE4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77D654A7-2FA8-4C20-8D5A-C7C999D5EBE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77D654A7-2FA8-4C20-8D5A-C7C999D5EBE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77D654A7-2FA8-4C20-8D5A-C7C999D5EBE4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C56EE328-00D6-4585-B0B5-C74CDDE9E1FC}.AppStore|Any CPU.ActiveCfg = Release|Any CPU
+		{C56EE328-00D6-4585-B0B5-C74CDDE9E1FC}.AppStore|Any CPU.Build.0 = Release|Any CPU
+		{C56EE328-00D6-4585-B0B5-C74CDDE9E1FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C56EE328-00D6-4585-B0B5-C74CDDE9E1FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C56EE328-00D6-4585-B0B5-C74CDDE9E1FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C56EE328-00D6-4585-B0B5-C74CDDE9E1FC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = GravatarMobileMac\GravatarMobileMac.csproj
+	EndGlobalSection
+EndGlobal

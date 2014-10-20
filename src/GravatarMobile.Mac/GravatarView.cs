@@ -21,7 +21,7 @@ namespace GravatarMobile.Mac
 		private Enums.GravatarViewStyle mStyle = Enums.GravatarViewStyle.Square;
 		private CAShapeLayer mMaskLayer;
 		private CAShapeLayer mBorderLayer;
-
+		private NSColor mBorderColor;
 		#endregion
 
 		#region Properties
@@ -44,7 +44,10 @@ namespace GravatarMobile.Mac
 
 					LoadImage();
 
-					this.NeedsLayout = true;
+					this.SetNeedsDisplayInRect(this.Frame);
+
+					ResizeSubviewsWithOldSize(this.Frame.Size);
+
 				}
 			}
 		}
@@ -62,12 +65,12 @@ namespace GravatarMobile.Mac
 				if (mBorderWidth != value)
 				{
 					mBorderWidth = value;
-					this.NeedsLayout = true;
+					this.SetNeedsDisplayInRect(this.Frame);
+					ResizeSubviewsWithOldSize(this.Frame.Size);
 				}
 			}
 		}
-
-
+			
 		[Export("ViewStyle"), Browsable(true), DisplayNameAttribute("Intial View Style")]
 		/// <summary>
 		/// Gets or sets the view style.
@@ -85,11 +88,37 @@ namespace GravatarMobile.Mac
 				{
 					mStyle = value;
 
-					this.NeedsLayout = true;
+					this.SetNeedsDisplayInRect(this.Frame);
+					ResizeSubviewsWithOldSize(this.Frame.Size);
 				}
 			}
 		}
 
+		/// <summary>
+		/// Gets or sets the color of the border.
+		/// </summary>
+		/// <value>The color of the border.</value>
+		public NSColor BorderColor
+		{
+			get
+			{
+				if (mBorderColor == null)
+				{
+					mBorderColor = NSColor.Black;
+				}
+
+				return mBorderColor;
+			}
+			set
+			{
+				if (mBorderColor != value)
+				{
+					mBorderColor = value;
+					this.SetNeedsDisplayInRect(this.Frame);
+					ResizeSubviewsWithOldSize(this.Frame.Size);
+				}
+			}
+		}
 		#endregion
 
 		#region Constructors
@@ -147,6 +176,7 @@ namespace GravatarMobile.Mac
 		/// </summary>
 		private void Prepare()
 		{
+			this.WantsLayer = true;
 			mImageView = new NSImageView(CGRect.Empty);
 			mImageView.AutoresizingMask = NSViewResizingMask.HeightSizable | NSViewResizingMask.WidthSizable;
 			mImageView.AutoresizesSubviews = true;
@@ -173,14 +203,22 @@ namespace GravatarMobile.Mac
 
 		#region Overrides
 
-		public override void Layout()
+	    public override void DrawRect(CGRect dirtyRect)
 		{
-			base.Layout();
+			base.DrawRect(dirtyRect);
 
 			mImageView.Frame = this.Bounds;
 
+		}
+
+		public override void ResizeSubviewsWithOldSize(CGSize oldSize)
+		{
+			base.ResizeSubviewsWithOldSize(oldSize);
+
+			mImageView.Frame = this.Bounds;
 			AddMask(this.Frame);
 		}
+
 
 		/// <summary>
 		/// Adds the mask.
@@ -194,6 +232,11 @@ namespace GravatarMobile.Mac
 				mBorderLayer.RemoveFromSuperLayer();
 			}
 
+			if (this.Layer == null)
+			{
+				this.Layer = new CALayer();
+			}
+
 			this.Layer.Mask = null;
 
 			switch (mStyle)
@@ -202,7 +245,17 @@ namespace GravatarMobile.Mac
 					{
 						if ((int)this.BorderWidth > 0)
 						{
+							var point = new CGPoint(MaskBounds.Size.Width / 2, MaskBounds.Size.Height / 2);
+							var maskPath = CGPath.FromRect(MaskBounds);
+							mBorderLayer = (CAShapeLayer)CAShapeLayer.Create();
+							mBorderLayer.Bounds = MaskBounds;
+							mBorderLayer.Path = maskPath;
+							mBorderLayer.LineWidth = this.BorderWidth * 2.0f;
+							mBorderLayer.StrokeColor = BorderColor.CGColor;
+							mBorderLayer.FillColor = NSColor.Clear.CGColor;
+							mBorderLayer.Position = point;
 
+							this.Layer.AddSublayer(mBorderLayer);
 						}
 					}
 					break;
@@ -229,7 +282,7 @@ namespace GravatarMobile.Mac
 							mBorderLayer.Bounds = MaskBounds;
 							mBorderLayer.Path = maskPath;
 							mBorderLayer.LineWidth = this.BorderWidth * 2.0f;
-							mBorderLayer.StrokeColor = NSColor.Black.CGColor;
+							mBorderLayer.StrokeColor = BorderColor.CGColor;
 							mBorderLayer.FillColor = NSColor.Clear.CGColor;
 							mBorderLayer.Position = point;
 
