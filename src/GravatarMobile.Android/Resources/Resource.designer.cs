@@ -43,11 +43,11 @@ namespace GravatarMobile.Droid
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f020001
-			public static int round = 2130837505;
+			// aapt resource value: 0x7f030000
+			public static int round = 2130903040;
 			
-			// aapt resource value: 0x7f020000
-			public static int square = 2130837504;
+			// aapt resource value: 0x7f030001
+			public static int square = 2130903041;
 			
 			static Id()
 			{
@@ -62,8 +62,8 @@ namespace GravatarMobile.Droid
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f030000
-			public static int library_name = 2130903040;
+			// aapt resource value: 0x7f020000
+			public static int library_name = 2130837504;
 			
 			static String()
 			{
