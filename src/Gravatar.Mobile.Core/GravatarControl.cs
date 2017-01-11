@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.IO;
 using System.Net;
@@ -65,19 +66,22 @@ namespace GravatarMobile.Core
 		{
 			var hClient = new  HttpClient();
 			var aURl = String.Format("{0}{1}.xml", kProfileUrl, Hash);
-			var result = await hClient.GetStreamAsync(aURl);
+		    HttpResponseMessage response_message = await hClient.GetAsync(aURl);
+		    var status_code = response_message.StatusCode;
 
-			if (result == null) 
-				return null;
+		    var result = response_message.Content.ReadAsStringAsync();
+			
 
+            //Check response status code
+            if (status_code == HttpStatusCode.NotFound)
+                return null;
     
-            TextReader tr = new StreamReader(result);
-            var outputString = await tr.ReadToEndAsync();
+            
 
-            if (String.IsNullOrWhiteSpace(outputString)) 
+            if (String.IsNullOrWhiteSpace(result.Result)) 
                 return null;
 
-            var xmlStream = new MemoryStream(Encoding.UTF8.GetBytes(outputString ?? ""));
+            var xmlStream = new MemoryStream(Encoding.UTF8.GetBytes( result.Result ?? ""));
 			var xml = new XmlSerializer(typeof(ProfileResponse));
             var outPut = (ProfileResponse)xml.Deserialize(xmlStream);
 
