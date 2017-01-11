@@ -10,9 +10,6 @@ icons:
 publisher-url: http://www.dsoftonline.com
 src-url: https://github.com/newky2k/GravatarMobile
 libraries: 
-  ios: 
-    - src/Gravatar.Mobile.Core/bin/Release/GravatarMobile.Core.dll
-    - src/GravatarMobile.iOS/bin/classic/Release/GravatarMobile.iOS.dll
   ios-unified: 
     - src/Gravatar.Mobile.Core/bin/Release/GravatarMobile.Core.dll
     - src/GravatarMobile.iOS/bin/unified/Release/GravatarMobile.iOS.dll    
@@ -40,10 +37,6 @@ samples:
     path: samples/iOS/GravatarMobile-iOS.sln
     configuration: "Release|iPhone"
     nobuild: true
-  - name: "iOS Classic Sample"
-    path: samples/iOS/GravatarMobile-iOS-Classic.sln
-    configuration: "Release|iPhone"        
-    nobuild: true
   - name: "Android Sample"
     path: samples/Android/GravatarMobile-Android.sln
     configuration: "Release"  
@@ -56,4 +49,3 @@ samples:
     path: samples/Mac/GravatarMobileMac.sln
     configuration: "Release"  
     nobuild: true
-...
