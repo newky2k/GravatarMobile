@@ -13,10 +13,12 @@ namespace GravatarMobileMac
 		{
 		}
 
-		public override void FinishedLaunching(NSObject notification)
+		public override void DidFinishLaunching(NSNotification notification)
 		{
+
 			mainWindowController = new MainWindowController();
 			mainWindowController.Window.MakeKeyAndOrderFront(this);
 		}
+
 	}
 }

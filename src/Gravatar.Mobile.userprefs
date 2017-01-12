@@ -1,12 +1,13 @@
-﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Gravatar.Mobile.Core\GravatarMobile.Core.csproj">
+﻿<Properties StartupConfiguration="{0B0A7F8D-216C-4665-91BF-FD7D21FAC0E6}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="GravatarMobile.iOS/GravatarExtensions.cs">
     <Files>
-      <File FileName="Gravatar.Mobile.Core\GravatarMobile.Core.csproj" Line="7" Column="7" />
+      <File FileName="GravatarMobile.iOS/GravatarExtensions.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.GravatarMobile.Android PreferredExecutionTarget="Android.AVD_for_Nexus_4_by_Google" />
 </Properties>
