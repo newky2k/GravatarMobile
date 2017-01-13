@@ -15,3 +15,9 @@ packages
 
 *.xam
 samples/WindowsPhone/GravatarMobile-WP-External.v11.suo
+
+samples/.DS_Store
+
+samples/iOS/.DS_Store
+
+.DS_Store
