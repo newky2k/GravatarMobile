@@ -127,14 +127,16 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\src\Gravatar.Mobile.Core\GravatarMobile.Core.csproj">
-      <Project>{c56ee328-00d6-4585-b0b5-c74cdde9e1fc}</Project>
-      <Name>GravatarMobile.Core</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\..\..\src\GravatarMobile.UWP\GravatarMobile.UWP.csproj">
       <Project>{e046a1c2-b6fe-4cfc-8123-b5f072f292f1}</Project>
       <Name>GravatarMobile.UWP</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="GravatarMobile.Core, Version=1.0.6225.37748, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\src\compiled\GravatarMobile.Core.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

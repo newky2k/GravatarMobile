@@ -115,16 +115,16 @@
     <EmbeddedResource Include="Properties\GravatarMobile.UWP.rd.xml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Gravatar.Mobile.Core\GravatarMobile.Core.csproj">
-      <Project>{c56ee328-00d6-4585-b0b5-c74cdde9e1fc}</Project>
-      <Name>GravatarMobile.Core</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Page Include="GravatarView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="GravatarMobile.Core, Version=1.0.6225.37748, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\compiled\GravatarMobile.Core.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

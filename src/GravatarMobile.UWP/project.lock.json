@@ -2169,9 +2169,6 @@
             "rid": "aot"
           }
         }
-      },
-      "GravatarMobile.Core/1.0.0": {
-        "type": "project"
       }
     },
     "UAP,Version=v10.0/win10-arm": {
@@ -4450,9 +4447,6 @@
         "runtime": {
           "lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
-      },
-      "GravatarMobile.Core/1.0.0": {
-        "type": "project"
       }
     },
     "UAP,Version=v10.0/win10-arm-aot": {
@@ -6770,9 +6764,6 @@
         "runtime": {
           "runtimes/aot/lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
-      },
-      "GravatarMobile.Core/1.0.0": {
-        "type": "project"
       }
     },
     "UAP,Version=v10.0/win10-x64": {
@@ -9060,9 +9051,6 @@
         "runtime": {
           "lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
-      },
-      "GravatarMobile.Core/1.0.0": {
-        "type": "project"
       }
     },
     "UAP,Version=v10.0/win10-x64-aot": {
@@ -11389,9 +11377,6 @@
         "runtime": {
           "runtimes/aot/lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
-      },
-      "GravatarMobile.Core/1.0.0": {
-        "type": "project"
       }
     },
     "UAP,Version=v10.0/win10-x86": {
@@ -13679,9 +13664,6 @@
         "runtime": {
           "lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
-      },
-      "GravatarMobile.Core/1.0.0": {
-        "type": "project"
       }
     },
     "UAP,Version=v10.0/win10-x86-aot": {
@@ -16008,9 +15990,6 @@
         "runtime": {
           "runtimes/aot/lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
-      },
-      "GravatarMobile.Core/1.0.0": {
-        "type": "project"
       }
     }
   },
@@ -22356,10 +22335,6 @@
         "system.xml.xmlserializer.4.0.11.nupkg.sha512",
         "system.xml.xmlserializer.nuspec"
       ]
-    },
-    "GravatarMobile.Core/1.0.0": {
-      "type": "project",
-      "msbuildProject": "../Gravatar.Mobile.Core/GravatarMobile.Core.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -22378,16 +22353,7 @@
       "projectName": "GravatarMobile.UWP",
       "projectPath": "C:\\Users\\newky\\OneDrive\\Documents\\GitHub\\GravatarMobile\\src\\GravatarMobile.UWP\\GravatarMobile.UWP.csproj",
       "projectJsonPath": "C:\\Users\\newky\\OneDrive\\Documents\\GitHub\\GravatarMobile\\src\\GravatarMobile.UWP\\project.json",
-      "outputType": "UAP",
-      "frameworks": {
-        "uap10.0": {
-          "projectReferences": {
-            "C:\\Users\\newky\\OneDrive\\Documents\\GitHub\\GravatarMobile\\src\\Gravatar.Mobile.Core\\GravatarMobile.Core.csproj": {
-              "projectPath": "C:\\Users\\newky\\OneDrive\\Documents\\GitHub\\GravatarMobile\\src\\Gravatar.Mobile.Core\\GravatarMobile.Core.csproj"
-            }
-          }
-        }
-      }
+      "outputType": "UAP"
     },
     "dependencies": {
       "Microsoft.Net.Http": "2.2.29",

@@ -2170,14 +2170,10 @@
           }
         }
       },
-      "GravatarMobile.Core/1.0.0": {
-        "type": "project"
-      },
       "GravatarMobile.UWP/1.0.0": {
         "type": "project",
         "framework": "UAP,Version=v10.0",
         "dependencies": {
-          "GravatarMobile.Core": "1.0.0",
           "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.2",
           "Microsoft.Net.Http": "2.2.29"
         }
@@ -4460,14 +4456,10 @@
           "lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "GravatarMobile.Core/1.0.0": {
-        "type": "project"
-      },
       "GravatarMobile.UWP/1.0.0": {
         "type": "project",
         "framework": "UAP,Version=v10.0",
         "dependencies": {
-          "GravatarMobile.Core": "1.0.0",
           "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.2",
           "Microsoft.Net.Http": "2.2.29"
         }
@@ -6789,14 +6781,10 @@
           "runtimes/aot/lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "GravatarMobile.Core/1.0.0": {
-        "type": "project"
-      },
       "GravatarMobile.UWP/1.0.0": {
         "type": "project",
         "framework": "UAP,Version=v10.0",
         "dependencies": {
-          "GravatarMobile.Core": "1.0.0",
           "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.2",
           "Microsoft.Net.Http": "2.2.29"
         }
@@ -9088,14 +9076,10 @@
           "lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "GravatarMobile.Core/1.0.0": {
-        "type": "project"
-      },
       "GravatarMobile.UWP/1.0.0": {
         "type": "project",
         "framework": "UAP,Version=v10.0",
         "dependencies": {
-          "GravatarMobile.Core": "1.0.0",
           "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.2",
           "Microsoft.Net.Http": "2.2.29"
         }
@@ -11426,14 +11410,10 @@
           "runtimes/aot/lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "GravatarMobile.Core/1.0.0": {
-        "type": "project"
-      },
       "GravatarMobile.UWP/1.0.0": {
         "type": "project",
         "framework": "UAP,Version=v10.0",
         "dependencies": {
-          "GravatarMobile.Core": "1.0.0",
           "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.2",
           "Microsoft.Net.Http": "2.2.29"
         }
@@ -13725,14 +13705,10 @@
           "lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "GravatarMobile.Core/1.0.0": {
-        "type": "project"
-      },
       "GravatarMobile.UWP/1.0.0": {
         "type": "project",
         "framework": "UAP,Version=v10.0",
         "dependencies": {
-          "GravatarMobile.Core": "1.0.0",
           "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.2",
           "Microsoft.Net.Http": "2.2.29"
         }
@@ -16063,14 +16039,10 @@
           "runtimes/aot/lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "GravatarMobile.Core/1.0.0": {
-        "type": "project"
-      },
       "GravatarMobile.UWP/1.0.0": {
         "type": "project",
         "framework": "UAP,Version=v10.0",
         "dependencies": {
-          "GravatarMobile.Core": "1.0.0",
           "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.2",
           "Microsoft.Net.Http": "2.2.29"
         }
@@ -22420,10 +22392,6 @@
         "system.xml.xmlserializer.nuspec"
       ]
     },
-    "GravatarMobile.Core/1.0.0": {
-      "type": "project",
-      "msbuildProject": "../../../../src/Gravatar.Mobile.Core/GravatarMobile.Core.csproj"
-    },
     "GravatarMobile.UWP/1.0.0": {
       "type": "project",
       "path": "../../../../src/GravatarMobile.UWP/project.json",
@@ -22452,9 +22420,6 @@
           "projectReferences": {
             "C:\\Users\\newky\\OneDrive\\Documents\\GitHub\\GravatarMobile\\src\\GravatarMobile.UWP\\GravatarMobile.UWP.csproj": {
               "projectPath": "C:\\Users\\newky\\OneDrive\\Documents\\GitHub\\GravatarMobile\\src\\GravatarMobile.UWP\\GravatarMobile.UWP.csproj"
-            },
-            "C:\\Users\\newky\\OneDrive\\Documents\\GitHub\\GravatarMobile\\src\\Gravatar.Mobile.Core\\GravatarMobile.Core.csproj": {
-              "projectPath": "C:\\Users\\newky\\OneDrive\\Documents\\GitHub\\GravatarMobile\\src\\Gravatar.Mobile.Core\\GravatarMobile.Core.csproj"
             }
           }
         }

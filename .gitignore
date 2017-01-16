@@ -21,3 +21,4 @@ samples/.DS_Store
 samples/iOS/.DS_Store
 
 .DS_Store
+*.suo
