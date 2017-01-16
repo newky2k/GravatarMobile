@@ -19,6 +19,9 @@ libraries:
   wp8: 
     - src/compiled/GravatarMobile.Core.dll
     - src/compiled/GravatarMobile.WP.dll
+  uwp: 
+    - src/compiled/GravatarMobile.Core.dll
+    - src/compiled/GravatarMobile.UWP.dll
   mac-unified: 
     - src/Gravatar.Mobile.Core/bin/Release/GravatarMobile.Core.dll
     - src/GravatarMobile.Mac/bin/Release/GravatarMobile.Mac.dll    
@@ -43,6 +46,10 @@ samples:
     nobuild: true
   - name: "Windows Phone Sample"
     path: samples/WindowsPhone/GravatarMobile-WP-External.sln
+    configuration: "Release"  
+    nobuild: true
+  - name: "Windows UWP"
+    path: samples/UWP/GravatarMobile_UWP.sln
     configuration: "Release"  
     nobuild: true
   - name: "Mac Sample"
