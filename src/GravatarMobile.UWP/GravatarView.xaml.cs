@@ -1,20 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Navigation;
-using Microsoft.Phone.Controls;
-using Microsoft.Phone.Shell;
-using GravatarMobile.Core.Interfaces;
-using GravatarMobile.Core;
+﻿using GravatarMobile.Core;
 using GravatarMobile.Core.Data;
-using System.Windows.Media;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
+using Windows.Foundation;
+using Windows.Foundation.Collections;
+using Windows.UI.Core;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Controls.Primitives;
+using Windows.UI.Xaml.Data;
+using Windows.UI.Xaml.Input;
+using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Navigation;
 
-namespace GravatarMobile.WP
+// The User Control item template is documented at https://go.microsoft.com/fwlink/?LinkId=234236
+
+namespace GravatarMobile.UWP
 {
-    public partial class GravatarView : UserControl, IGravatarView
+    public sealed partial class GravatarView : UserControl
     {
         public static DependencyProperty IntitialStyleProperty = DependencyProperty.Register("IntitialStyle", typeof(Enums.GravatarViewStyle), typeof(GravatarView), null);
 
@@ -87,44 +93,51 @@ namespace GravatarMobile.WP
         {
             if (mStyle == Enums.GravatarViewStyle.Round)
             {
-                imgAvatar.Clip = new EllipseGeometry()
-                {
-                    Center = new Point(this.Width / 2, this.Height / 2),
-                    RadiusX = this.Width / 2,
-                    RadiusY = this.Height / 2,
-                };
+                imgAvatar.Visibility = Visibility.Collapsed;
+
+                imgCircle.Visibility = Visibility.Visible;
+                //throw new NotSupportedException("Round mode not supported on UWP");
+
+
+                //imgAvatar.Clip = new EllipseGeometry()
+                //{
+                //    Center = new Point(this.Width / 2, this.Height / 2),
+                //    RadiusX = this.Width / 2,
+                //    RadiusY = this.Height / 2,
+                //};
             }
             else
             {
-                imgAvatar.Clip = null;
+                imgAvatar.Visibility = Visibility.Visible;
+
+                imgCircle.Visibility = Visibility.Collapsed;
+                // imgAvatar.Clip = null;
             }
         }
 
         #endregion
 
-        #region Constructors
-        /// <summary>
-        /// Constructors
-        /// </summary>
+
         public GravatarView()
         {
-            InitializeComponent();
+            this.InitializeComponent();
         }
-        #endregion
 
         #region Private Methods
 
         private async void LoadImageAysnc()
         {
-            var size = (this.Width > 80) ? this.Width : 80;
+            var size = this.Width;
 
             await mItem.LoadImageAsync((int)size);
 
-            this.Dispatcher.BeginInvoke(() =>
-                {
-                    imgAvatar.Source = mItem.ImageAsBitmap();
+            await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () => {
 
-                });
+                var image = await mItem.ImageAsBitmapAsync();
+                imgAvatar.Source = image;
+                imgAvatarRound.ImageSource = image;
+
+            });
 
         }
 
@@ -136,7 +149,7 @@ namespace GravatarMobile.WP
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void OnControlLoaded(object sender, RoutedEventArgs e)
+        private void OnLoaded(object sender, RoutedEventArgs e)
         {
             ViewStyle = IntitialViewStyle;
         }
