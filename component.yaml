@@ -19,7 +19,7 @@ libraries:
   wp8: 
     - src/compiled/GravatarMobile.Core.dll
     - src/compiled/GravatarMobile.WP.dll
-  uwp: 
+  uap: 
     - src/compiled/GravatarMobile.Core.dll
     - src/compiled/GravatarMobile.UWP.dll
   mac-unified: 
@@ -32,7 +32,7 @@ screenshots:
   - component/screenshot_android.png
   - component/screenshot_wp.png  
 getting-started: component/GettingStarted.md
-version: 1.2
+version: 1.3
 build:
     - src/Gravatar.Mobile.sln
 samples: 
@@ -49,7 +49,7 @@ samples:
     configuration: "Release"  
     nobuild: true
   - name: "Windows UWP"
-    path: samples/UWP/GravatarMobile_UWP.sln
+    path: samples/UWP/GravatarMobile-UWP.sln
     configuration: "Release"  
     nobuild: true
   - name: "Mac Sample"
