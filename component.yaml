@@ -56,3 +56,10 @@ samples:
     path: samples/Mac/GravatarMobileMac.sln
     configuration: "Release"  
     nobuild: true
+
+# XAML files require extra resources
+additional-files:
+ - src: src/compiled/GravatarMobile.UWP.pri
+   dst: lib/uap/GravatarMobile.UWP.pri
+ - src: src/compiled/GravatarMobile.UWP/GravatarMobile.UWP.xr.xml
+   dst: lib/uap/GravatarMobile.UWP/GravatarMobile.UWP.xr.xml
