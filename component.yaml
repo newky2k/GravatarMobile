@@ -63,3 +63,6 @@ additional-files:
    dst: lib/uap/GravatarMobile.UWP.pri
  - src: src/compiled/GravatarMobile.UWP/GravatarMobile.UWP.xr.xml
    dst: lib/uap/GravatarMobile.UWP/GravatarMobile.UWP.xr.xml
+# workaround for bug in xamarin-component
+ - src: samples/UWP/GravatarMobile_UWP/project.json
+   dst: samples/GravatarMobile-UWP/GravatarMobile_UWP/project.json
