@@ -28,6 +28,7 @@
   <ItemGroup>
     <Compile Include="**\*.shared.cs" />
     <Compile Include="**\*.shared.*.cs" />
+    <PackageReference Include="Xamarin.Forms" Version="4.7.0.968" />
   </ItemGroup>
   <ItemGroup Condition=" $(TargetFramework.StartsWith('netstandard')) ">
     <Compile Include="**\*.netstandard.cs" />
@@ -44,6 +45,7 @@
   <ItemGroup Condition=" $(TargetFramework.StartsWith('netcoreapp')) ">
     <Compile Include="**\*.netcore.cs" />
     <Compile Include="**\*.netcore.*.cs" />
+    <PackageReference Include="Xamarin.Forms.Platform.WPF" Version="4.7.0.968" />
   </ItemGroup>
   
   <PropertyGroup Condition=" $(TargetFramework.StartsWith('net461')) ">
@@ -52,6 +54,7 @@
   <ItemGroup Condition=" $(TargetFramework.StartsWith('net461')) ">
     <Compile Include="**\*.netf.cs" />
     <Compile Include="**\*.netf.*.cs" />
+    <PackageReference Include="Xamarin.Forms.Platform.WPF" Version="4.7.0.968" />
   </ItemGroup>
   
   <ItemGroup Condition=" $(TargetFramework.StartsWith('MonoAndroid')) ">
@@ -66,6 +69,9 @@
   <ItemGroup Condition=" $(TargetFramework.StartsWith('Xamarin.Mac')) ">
     <Compile Include="**\*.mac.cs" />
     <Compile Include="**\*.mac.*.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GravatarMobile\GravatarMobile.csproj" />
   </ItemGroup>
 
 </Project>
