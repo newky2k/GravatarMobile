@@ -105,14 +105,14 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="GravatarExtensions.cs" />
-    <Compile Include="GravatarView.xaml.cs">
-      <DependentUpon>GravatarView.xaml</DependentUpon>
+    <Compile Include="GravatarView.uwp.xaml.cs">
+      <DependentUpon>GravatarView.uwp.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\GravatarMobile.UWP.rd.xml" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="GravatarView.xaml">
+    <Page Include="GravatarView.uwp.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

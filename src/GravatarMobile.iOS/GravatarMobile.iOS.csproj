@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -44,10 +44,4 @@
     <Compile Include="GravatarView.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
-  <ItemGroup>
-    <ProjectReference Include="..\Gravatar.Mobile.Core\GravatarMobile.Core.csproj">
-      <Project>{C56EE328-00D6-4585-B0B5-C74CDDE9E1FC}</Project>
-      <Name>GravatarMobile.Core</Name>
-    </ProjectReference>
-  </ItemGroup>
 </Project>

@@ -1,6 +1,6 @@
 ﻿<Project Sdk="MSBuild.Sdk.Extras/2.0.54">
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;Xamarin.iOS10;Xamarin.Mac20;MonoAndroid90;MonoAndroid10.0;</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;Xamarin.iOS10;Xamarin.Mac20;MonoAndroid90;</TargetFrameworks>
     <TargetFrameworks Condition=" '$(OS)' == 'Windows_NT' ">$(TargetFrameworks);uap10.0.16299;netcoreapp3.0;net461;</TargetFrameworks>
     <LangVersion>7.2</LangVersion>
     <DefineConstants>$(DefineConstants);</DefineConstants>
@@ -10,6 +10,15 @@
     <Configurations>Debug;Release;</Configurations>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>DSoft.snk</AssemblyOriginatorKeyFile>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <RepositoryUrl>https://github.com/newky2k/GravatarMobile</RepositoryUrl>
+    <RepositoryType>github</RepositoryType>
+    <Version>1.4.0</Version>
+    <AssemblyVersion>1.4.0.0</AssemblyVersion>
+    <Description>.Net API for Gravatar with support for images and profiles - support for iOS, Android, Mac, UWP and WPF(.Net core and .Net framework)(Preview).</Description>
+    <Authors>newky2k</Authors>
+    <PackageProjectUrl>https://github.com/newky2k/GravatarMobile</PackageProjectUrl>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)'=='Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -52,13 +61,14 @@
   </PropertyGroup>
   
   <ItemGroup Condition=" $(TargetFramework.StartsWith('net461')) ">
+    <Reference Include="System.Net.Http" />
     <Compile Include="**\*.netf.cs" />
     <Compile Include="**\*.netf.*.cs" />
   </ItemGroup>
   <ItemGroup Condition=" $(TargetFramework.StartsWith('MonoAndroid')) ">
     <Compile Include="**\*.android.cs" />
     <Compile Include="**\*.android.*.cs" />
-    <AndroidResource Include="Resources\xml\*.xml" />
+    <AndroidResource Include="Resources\values\*.xml" />
   </ItemGroup>
   <ItemGroup Condition=" $(TargetFramework.StartsWith('Xamarin.iOS')) ">
     <Compile Include="**\*.ios.cs" />
@@ -68,4 +78,5 @@
     <Compile Include="**\*.mac.cs" />
     <Compile Include="**\*.mac.*.cs" />
   </ItemGroup>
+
 </Project>

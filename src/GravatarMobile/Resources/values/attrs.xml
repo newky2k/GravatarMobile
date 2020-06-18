@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<resources>
+<declare-styleable name="GravatarView">
+    <attr name="initial_style">
+        <enum name="square" value="0" />
+        <enum name="round" value="1" />
+    </attr>
+</declare-styleable>
+</resources>
