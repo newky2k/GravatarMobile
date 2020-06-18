@@ -7,7 +7,7 @@ using Foundation;
 using CoreAnimation;
 using CoreGraphics;
 
-namespace GravatarMobile.iOS
+namespace GravatarMobile
 {
     [Register("GravatarView")]
     public class GravatarView : UIView, IGravatarView

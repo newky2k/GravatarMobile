@@ -1,6 +1,4 @@
-﻿using GravatarMobile.Core;
-using GravatarMobile.Core.Data;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -17,19 +15,19 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Windows.UI.Xaml.Shapes;
 
-// The User Control item template is documented at https://go.microsoft.com/fwlink/?LinkId=234236
-
 namespace GravatarMobile
 {
-    public sealed partial class GravatarView : UserControl
+    public class GravatarView : UserControl
     {
-        public static DependencyProperty IntitialStyleProperty = DependencyProperty.Register("IntitialStyle", typeof(Enums.GravatarViewStyle), typeof(GravatarView), null);
+        public static DependencyProperty IntitialStyleProperty = DependencyProperty.Register("IntitialStyle", typeof(GravatarViewStyle), typeof(GravatarView), null);
 
         #region Fields
 
         private Gravatar mItem;
-        private Enums.GravatarViewStyle mStyle = Enums.GravatarViewStyle.Square;
-
+        private GravatarViewStyle mStyle = GravatarViewStyle.Square;
+        private Ellipse imgCircle;
+        private ImageBrush imgAvatarRound;
+        private Windows.UI.Xaml.Controls.Image imgAvatar;
         #endregion
 
         #region Properties
@@ -57,11 +55,11 @@ namespace GravatarMobile
         /// <summary>
         /// Get the initial style
         /// </summary>
-        public Enums.GravatarViewStyle IntitialViewStyle
+        public GravatarViewStyle IntitialViewStyle
         {
             get
             {
-                return (Enums.GravatarViewStyle)GetValue(IntitialStyleProperty);
+                return (GravatarViewStyle)GetValue(IntitialStyleProperty);
             }
             set
             {
@@ -73,7 +71,7 @@ namespace GravatarMobile
         /// Gets or sets the view style.
         /// </summary>
         /// <value>The view style.</value>
-        public Enums.GravatarViewStyle ViewStyle
+        public GravatarViewStyle ViewStyle
         {
             get
             {
@@ -92,7 +90,7 @@ namespace GravatarMobile
 
         private void UpdateStyle()
         {
-            if (mStyle == Enums.GravatarViewStyle.Round)
+            if (mStyle == GravatarViewStyle.Round)
             {
                 imgAvatar.Visibility = Visibility.Collapsed;
 
@@ -121,8 +119,6 @@ namespace GravatarMobile
 
         public GravatarView()
         {
-            this.InitializeComponent();
-
             Loaded += OnLoaded;
 
             var grid = new Grid();
@@ -130,11 +126,12 @@ namespace GravatarMobile
             var imgCircleL = new Ellipse();
             var imgAvatarRoundL = new ImageBrush();
             var imgAvatar = new Windows.UI.Xaml.Controls.Image();
-            imgCircle.Fill = imgAvatarRoundL;
+            imgCircleL.Fill = imgAvatarRoundL;
 
             grid.Children.Add(imgCircleL);
             grid.Children.Add(imgAvatar);
 
+            Content = grid;
         }
 
         #region Private Methods
