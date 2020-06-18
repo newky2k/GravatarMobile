@@ -59,12 +59,12 @@
   <PropertyGroup Condition=" $(TargetFramework.StartsWith('net461')) ">
     <UseWPF>true</UseWPF>
   </PropertyGroup>
-  
   <ItemGroup Condition=" $(TargetFramework.StartsWith('net461')) ">
     <Reference Include="System.Net.Http" />
     <Compile Include="**\*.netf.cs" />
     <Compile Include="**\*.netf.*.cs" />
   </ItemGroup>
+  
   <ItemGroup Condition=" $(TargetFramework.StartsWith('MonoAndroid')) ">
     <Compile Include="**\*.android.cs" />
     <Compile Include="**\*.android.*.cs" />
