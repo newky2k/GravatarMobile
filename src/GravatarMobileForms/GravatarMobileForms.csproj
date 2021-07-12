@@ -1,7 +1,7 @@
 ﻿<Project Sdk="MSBuild.Sdk.Extras/2.0.54">
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;Xamarin.iOS10;Xamarin.Mac20;MonoAndroid90;MonoAndroid10.0;</TargetFrameworks>
-    <TargetFrameworks Condition=" '$(OS)' == 'Windows_NT' ">$(TargetFrameworks);uap10.0.16299;netcoreapp3.0;net461;</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;Xamarin.iOS10;Xamarin.Mac20;MonoAndroid10.0;</TargetFrameworks>
+    <TargetFrameworks Condition=" '$(OS)' == 'Windows_NT' ">$(TargetFrameworks);uap10.0.16299;netcoreapp3.1;net461;</TargetFrameworks>
     <LangVersion>7.2</LangVersion>
     <DefineConstants>$(DefineConstants);</DefineConstants>
     <UseFullSemVerForNuGet>false</UseFullSemVerForNuGet>
@@ -28,7 +28,7 @@
   <ItemGroup>
     <Compile Include="**\*.shared.cs" />
     <Compile Include="**\*.shared.*.cs" />
-    <PackageReference Include="Xamarin.Forms" Version="4.7.0.968" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
   </ItemGroup>
   <ItemGroup Condition=" $(TargetFramework.StartsWith('netstandard')) ">
     <Compile Include="**\*.netstandard.cs" />
@@ -45,7 +45,7 @@
   <ItemGroup Condition=" $(TargetFramework.StartsWith('netcoreapp')) ">
     <Compile Include="**\*.netcore.cs" />
     <Compile Include="**\*.netcore.*.cs" />
-    <PackageReference Include="Xamarin.Forms.Platform.WPF" Version="4.7.0.968" />
+    <PackageReference Include="Xamarin.Forms.Platform.WPF" Version="5.0.0.2012" />
   </ItemGroup>
   
   <PropertyGroup Condition=" $(TargetFramework.StartsWith('net461')) ">
@@ -54,7 +54,7 @@
   <ItemGroup Condition=" $(TargetFramework.StartsWith('net461')) ">
     <Compile Include="**\*.netf.cs" />
     <Compile Include="**\*.netf.*.cs" />
-    <PackageReference Include="Xamarin.Forms.Platform.WPF" Version="4.7.0.968" />
+    <PackageReference Include="Xamarin.Forms.Platform.WPF" Version="5.0.0.2012" />
   </ItemGroup>
   
   <ItemGroup Condition=" $(TargetFramework.StartsWith('MonoAndroid')) ">
