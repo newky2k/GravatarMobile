@@ -10,6 +10,17 @@
     <Configurations>Debug;Release;</Configurations>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>DSoft.snk</AssemblyOriginatorKeyFile>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <PackageId>DSoft.Gravatar.Mobile.Forms</PackageId>
+    <Authors>newky2k</Authors>
+    <Company>newky2knewky2k</Company>
+    <Description>Xamarin.Forms plugin for DSoft.Gravatar.Mobile</Description>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/newky2k/GravatarMobile</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/newky2k/GravatarMobile</RepositoryUrl>
+    <RepositoryType>github</RepositoryType>
+    <PackageReleaseNotes>xamarin.forms gravatar</PackageReleaseNotes>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)'=='Debug' ">
     <DebugSymbols>true</DebugSymbols>

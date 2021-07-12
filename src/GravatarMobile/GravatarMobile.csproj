@@ -19,6 +19,9 @@
     <Description>.Net API for Gravatar with support for images and profiles - support for iOS, Android, Mac, UWP and WPF(.Net core and .Net framework)(Preview).</Description>
     <Authors>newky2k</Authors>
     <PackageProjectUrl>https://github.com/newky2k/GravatarMobile</PackageProjectUrl>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <PackageId>DSoft.Gravatar.Mobile</PackageId>
+    <PackageReleaseNotes>gravatar ios android</PackageReleaseNotes>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)'=='Debug' ">
     <DebugSymbols>true</DebugSymbols>
