@@ -1,4 +1,8 @@
-﻿using System;
+﻿using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Media;
+using Microsoft.UI.Xaml.Shapes;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -6,14 +10,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Core;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
-using Windows.UI.Xaml.Shapes;
+
 
 namespace GravatarMobile
 {
@@ -27,7 +24,7 @@ namespace GravatarMobile
         private GravatarViewStyle mStyle = GravatarViewStyle.Square;
         private Ellipse imgCircle;
         private ImageBrush imgAvatarRound;
-        private Windows.UI.Xaml.Controls.Image imgAvatar;
+        private Image imgAvatar;
         #endregion
 
         #region Properties
@@ -125,7 +122,7 @@ namespace GravatarMobile
 
             var imgCircleL = new Ellipse();
             var imgAvatarRoundL = new ImageBrush();
-            var imgAvatar = new Windows.UI.Xaml.Controls.Image();
+            var imgAvatar = new Image();
             imgCircleL.Fill = imgAvatarRoundL;
 
             grid.Children.Add(imgCircleL);

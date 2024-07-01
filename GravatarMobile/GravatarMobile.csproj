@@ -1,86 +1,117 @@
-﻿<Project Sdk="MSBuild.Sdk.Extras/3.0.38">
-  <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;Xamarin.iOS10;Xamarin.Mac20;MonoAndroid90;</TargetFrameworks>
-    <TargetFrameworks Condition=" '$(OS)' == 'Windows_NT' ">$(TargetFrameworks);uap10.0.19041;netcoreapp3.1;net461;</TargetFrameworks>
-    <LangVersion>7.2</LangVersion>
-    <DefineConstants>$(DefineConstants);</DefineConstants>
-    <UseFullSemVerForNuGet>false</UseFullSemVerForNuGet>
-    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
-    <Product>$(AssemblyName) ($(TargetFramework))</Product>
-    <Configurations>Debug;Release;</Configurations>
-    <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>DSoft.snk</AssemblyOriginatorKeyFile>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <RepositoryUrl>https://github.com/newky2k/GravatarMobile</RepositoryUrl>
-    <RepositoryType>github</RepositoryType>
-    <Version>1.4.0</Version>
-    <AssemblyVersion>1.4.0.0</AssemblyVersion>
-    <Description>.Net API for Gravatar with support for images and profiles - support for iOS, Android, Mac, UWP and WPF(.Net core and .Net framework)(Preview).</Description>
-    <Authors>newky2k</Authors>
-    <PackageProjectUrl>https://github.com/newky2k/GravatarMobile</PackageProjectUrl>
-    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <PackageId>DSoft.Gravatar.Mobile</PackageId>
-    <PackageReleaseNotes>gravatar ios android</PackageReleaseNotes>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)'=='Debug' ">
-    <DebugSymbols>true</DebugSymbols>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)'=='Release' And '$(OS)' == 'Windows_NT' ">
-    <!-- sourcelink: Declare that the Repository URL can be published to NuSpec -->
-    <PublishRepositoryUrl>true</PublishRepositoryUrl>
-    <!-- sourcelink: Embed source files that are not tracked by the source control manager to the PDB -->
-    <EmbedUntrackedSources>true</EmbedUntrackedSources>
-    <!-- sourcelink: Include PDB in the built .nupkg -->
-    <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
-  </PropertyGroup>
-  <ItemGroup Condition=" '$(Configuration)'=='Release' And '$(OS)' == 'Windows_NT' ">
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="**\*.shared.cs" />
-    <Compile Include="**\*.shared.*.cs" />
-  </ItemGroup>
-  <ItemGroup Condition=" $(TargetFramework.StartsWith('netstandard')) ">
-    <Compile Include="**\*.netstandard.cs" />
-    <Compile Include="**\*.netstandard.*.cs" />
-  </ItemGroup>
-  <ItemGroup Condition=" $(TargetFramework.StartsWith('uap10.0')) ">
-    <Compile Include="**\*.uwp.cs" />
-    <Compile Include="**\*.uwp.*.cs" />
-  </ItemGroup>
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFrameworks>netstandard2.0;net8.0-windows7;net8.0-android;net8.0-ios;net8.0-maccatalyst</TargetFrameworks>
+		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net8.0-windows10.0.19041.0;net462;</TargetFrameworks>
+		<LangVersion>Latest</LangVersion>
+		<DefineConstants>$(DefineConstants);</DefineConstants>
+		<UseFullSemVerForNuGet>false</UseFullSemVerForNuGet>
+		<EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+		<Product>$(AssemblyName) ($(TargetFramework))</Product>
+		<Configurations>Debug;Release;</Configurations>
+		<SignAssembly>true</SignAssembly>
+		<AssemblyOriginatorKeyFile>DSoft.snk</AssemblyOriginatorKeyFile>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<RepositoryUrl>https://github.com/newky2k/GravatarMobile</RepositoryUrl>
+		<RepositoryType>github</RepositoryType>
+		<Version>1.4.0</Version>
+		<AssemblyVersion>1.4.0.0</AssemblyVersion>
+		<Description>.Net API for Gravatar with support for images and profiles - support for iOS, Android, Mac, UWP and WPF(.Net core and .Net framework)(Preview).</Description>
+		<Authors>newky2k</Authors>
+		<PackageProjectUrl>https://github.com/newky2k/GravatarMobile</PackageProjectUrl>
+		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+		<PackageId>DSoft.Gravatar.Mobile</PackageId>
+		<PackageReleaseNotes>gravatar ios android</PackageReleaseNotes>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">14.2</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">14.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
+		<EnablePreviewMsixTooling>true</EnablePreviewMsixTooling>
+		<GenerateLibraryLayout>true</GenerateLibraryLayout>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+	</PropertyGroup>
 
-  <PropertyGroup Condition=" $(TargetFramework.StartsWith('netcoreapp')) ">
-    <UseWPF>true</UseWPF>
-  </PropertyGroup>
-  
-  <ItemGroup Condition=" $(TargetFramework.StartsWith('netcoreapp')) ">
-    <Compile Include="**\*.netcore.cs" />
-    <Compile Include="**\*.netcore.*.cs" />
-  </ItemGroup>
+	<ItemGroup>
+		<None Include="../README.md" Pack="true" PackagePath="\" />
+	</ItemGroup>
+	
+	<PropertyGroup Condition=" '$(Configuration)'=='Debug' ">
+		<DebugSymbols>true</DebugSymbols>
+	</PropertyGroup>
+	
+	<PropertyGroup Condition=" '$(Configuration)'=='Release' And '$(OS)' == 'Windows_NT' ">
+		<!-- sourcelink: Declare that the Repository URL can be published to NuSpec -->
+		<PublishRepositoryUrl>true</PublishRepositoryUrl>
+		<!-- sourcelink: Embed source files that are not tracked by the source control manager to the PDB -->
+		<EmbedUntrackedSources>true</EmbedUntrackedSources>
+		<!-- sourcelink: Include PDB in the built .nupkg -->
+		<AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+	</PropertyGroup>
 
-  <PropertyGroup Condition=" $(TargetFramework.StartsWith('net461')) ">
-    <UseWPF>true</UseWPF>
-  </PropertyGroup>
-  <ItemGroup Condition=" $(TargetFramework.StartsWith('net461')) ">
-    <Reference Include="System.Net.Http" />
-    <Compile Include="**\*.netf.cs" />
-    <Compile Include="**\*.netf.*.cs" />
-  </ItemGroup>
-  
-  <ItemGroup Condition=" $(TargetFramework.StartsWith('MonoAndroid')) ">
-    <Compile Include="**\*.android.cs" />
-    <Compile Include="**\*.android.*.cs" />
-    <AndroidResource Include="Resources\values\*.xml" />
-  </ItemGroup>
-  <ItemGroup Condition=" $(TargetFramework.StartsWith('Xamarin.iOS')) ">
-    <Compile Include="**\*.ios.cs" />
-    <Compile Include="**\*.ios.*.cs" />
-  </ItemGroup>
-  <ItemGroup Condition=" $(TargetFramework.StartsWith('Xamarin.Mac')) ">
-    <Compile Include="**\*.mac.cs" />
-    <Compile Include="**\*.mac.*.cs" />
-  </ItemGroup>
+	<ItemGroup Condition=" '$(Configuration)'=='Release' And '$(OS)' == 'Windows_NT' ">
+		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Compile Include="**\*.shared.cs" />
+		<Compile Include="**\*.shared.*.cs" />
+	</ItemGroup>
+
+	<ItemGroup Condition=" $(TargetFramework.StartsWith('netstandard')) ">
+		<Compile Include="**\*.netstandard.cs" />
+		<Compile Include="**\*.netstandard.*.cs" />
+	</ItemGroup>
+
+	<PropertyGroup Condition=" $(TargetFramework.StartsWith('net8.0-windows10')) ">
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
+		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
+		<DefineConstants>$(DefineConstants);WINUI</DefineConstants>
+		<RuntimeIdentifiers Condition="$([MSBuild]::GetTargetFrameworkVersion('$(TargetFramework)')) &gt;= 8">win-x86;win-x64;win-arm64</RuntimeIdentifiers>
+		<RuntimeIdentifiers Condition="$([MSBuild]::GetTargetFrameworkVersion('$(TargetFramework)')) &lt; 8">win10-x86;win10-x64;win10-arm64</RuntimeIdentifiers>
+		<UseWinUI>true</UseWinUI>
+	</PropertyGroup>
+	
+	<ItemGroup Condition=" $(TargetFramework.StartsWith('net8.0-windows10')) ">
+		<PackageReference Include="Microsoft.WindowsAppSDK" Version="1.5.240311000" />
+		<PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.22621.756" />
+		<Compile Include="**\*.uwp.cs" />
+		<Compile Include="**\*.uwp.*.cs" />
+	</ItemGroup>
+
+	<PropertyGroup Condition=" $(TargetFramework.StartsWith('net8.0-windows7')) ">
+		<UseWPF>true</UseWPF>
+	</PropertyGroup>
+
+	<ItemGroup Condition=" $(TargetFramework.StartsWith('net8.0-windows7')) ">
+		<Compile Include="**\*.netcore.cs" />
+		<Compile Include="**\*.netcore.*.cs" />
+	</ItemGroup>
+
+	<PropertyGroup Condition=" $(TargetFramework.StartsWith('net462')) ">
+		<UseWPF>true</UseWPF>
+	</PropertyGroup>
+
+	<ItemGroup Condition=" $(TargetFramework.StartsWith('net462')) ">
+		<Reference Include="System.Net.Http" />
+		<Compile Include="**\*.netf.cs" />
+		<Compile Include="**\*.netf.*.cs" />
+	</ItemGroup>
+
+	<ItemGroup Condition=" $(TargetFramework.StartsWith('net8.0-android')) ">
+		<Compile Include="**\*.android.cs" />
+		<Compile Include="**\*.android.*.cs" />
+		<AndroidResource Include="Resources\values\*.xml" />
+	</ItemGroup>
+	
+	<ItemGroup Condition=" $(TargetFramework.StartsWith('net8.0-ios')) ">
+		<Compile Include="**\*.ios.cs" />
+		<Compile Include="**\*.ios.*.cs" />
+	</ItemGroup>
+	
+	<ItemGroup Condition=" $(TargetFramework.StartsWith('Xamarin.Mac')) ">
+		<Compile Include="**\*.mac.cs" />
+		<Compile Include="**\*.mac.*.cs" />
+	</ItemGroup>
 
 
 </Project>
