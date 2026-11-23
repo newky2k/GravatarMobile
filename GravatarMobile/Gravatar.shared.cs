@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Threading.Tasks;
 using System.IO;
 
@@ -103,8 +103,16 @@ namespace GravatarMobile
 		/// </summary>
 		private async void Setup()
 		{
-			await LoadImageAsync();
-			await LoadProfileAsync();
+			// Fire and forget from the constructor: a network failure must not crash the app.
+			// The Image and Profile properties throw if their data was not loaded.
+			try
+			{
+				await LoadImageAsync();
+				await LoadProfileAsync();
+			}
+			catch (Exception)
+			{
+			}
 		}
 
         /// <summary>
@@ -139,7 +147,7 @@ namespace GravatarMobile
         #region Constuctor
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="GravatarMobile.Core.Gravatar"/> class.
+        /// Initializes a new instance of the <see cref="Gravatar"/> class.
         /// </summary>
         /// <param name="Email">Email.</param>
 		public Gravatar(String Email)

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -17,26 +17,10 @@ namespace GravatarMobile
         /// <param name="Item">Item.</param>
         public static BitmapImage ImageAsBitmap(this Gravatar Item)
         {
+            if (Item == null)
+                return null;
 
-            if (Item != null && Item.Image != null)
-            {
-                using (var stream = new MemoryStream())
-                {
-                    var imagedata = Item.Image.ToArray();
-
-                    stream.Write(imagedata, 0, imagedata.Length);
-
-                    var image = new BitmapImage();
-                    stream.Position = 0;
-
-                    image.StreamSource = stream;
-
-                    return image;
-                }
-            }
-
-            return null;
-
+            return CreateBitmap(Item.Image);
         }
 
         /// <summary>
@@ -44,28 +28,27 @@ namespace GravatarMobile
         /// </summary>
         /// <returns>The as user interface image.</returns>
         /// <param name="Item">Item.</param>
-        public static async Task<BitmapImage> ImageAsBitmapAsync(this Gravatar Item)
+        public static Task<BitmapImage> ImageAsBitmapAsync(this Gravatar Item)
         {
+            return Task.FromResult(ImageAsBitmap(Item));
+        }
 
-            if (Item != null && Item.Image != null)
+        private static BitmapImage CreateBitmap(byte[] data)
+        {
+            if (data == null || data.Length == 0)
+                return null;
+
+            using (var stream = new MemoryStream(data))
             {
-                using (var stream = new MemoryStream())
-                {
-                    var imagedata = Item.Image.ToArray();
+                var image = new BitmapImage();
+                image.BeginInit();
+                image.CacheOption = BitmapCacheOption.OnLoad; // decode now, the stream is disposed below
+                image.StreamSource = stream;
+                image.EndInit();
+                image.Freeze();
 
-                    await stream.WriteAsync(imagedata, 0, imagedata.Length);
-
-                    var image = new BitmapImage();
-                    stream.Position = 0;
-
-                    image.StreamSource = stream;
-
-                    return image;
-                }
+                return image;
             }
-
-            return null;
-
         }
     }
 }

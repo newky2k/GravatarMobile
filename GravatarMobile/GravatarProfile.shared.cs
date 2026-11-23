@@ -122,7 +122,7 @@ namespace GravatarMobile
 
 		#region Constructors
 		/// <summary>
-		/// Initializes a new instance of the <see cref="GravatarMobile.Core.GravatarProfile"/> class.
+		/// Initializes a new instance of the <see cref="GravatarProfile"/> class.
 		/// </summary>
 		public GravatarProfile()
 		{

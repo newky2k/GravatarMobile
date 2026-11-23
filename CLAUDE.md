@@ -1,0 +1,38 @@
+# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+
+## What this is
+
+`DSoft.Gravatar.Mobile` — a .NET library for Gravatar images and profiles (`Gravatar`, `GravatarControl`, `GravatarProfile`). It is being migrated in stages:
+
+1. **Core (done):** `GravatarMobile/GravatarMobile.csproj` builds only the platform-neutral `*.shared.cs` files, targeting `netstandard2.0;net10.0;net11.0` plus `net10.0-windows;net11.0-windows` (WPF `ImageAsBitmap` extensions in `GravatarExtensions.netf.netcore.cs`).
+2. **Native views (todo):** port `GravatarView.android.cs`, `.ios.cs`, `.mac.cs` and `.uwp.cs` and their extensions to `net10.0` and `net11.0` for android, ios and maccatalyst. These files are in the tree but not compiled.
+3. **MAUI views (todo):** a MAUI control built from the native views.
+
+The old Xamarin and UWP samples under `samples/` are legacy and not in the solution.
+
+## Build and test
+
+```bash
+dotnet build Gravatar.Mobile.sln -c Release
+dotnet test GravatarMobile.Tests/GravatarMobile.Tests.csproj -c Release
+```
+
+- `GravatarMobile.Tests` (xunit, `net10.0;net11.0`) covers the hashing and the argument checks. There are no network tests.
+- `EnableWindowsTargeting` is on so the Windows targets compile on Linux. `WPFSample` compiles there but only runs on Windows.
+- `MD5` is a thin wrapper over `System.Security.Cryptography.MD5` (Gravatar identifies accounts by MD5); it is not used for security.
+- Assemblies are strong-name signed with `GravatarMobile/DSoft.snk`; do not remove it.
+- `GeneratePackageOnBuild=true`, so every build produces `DSoft.Gravatar.Mobile.<version>.nupkg` (with `README.md` and `DSIcon.png`). Release builds add SourceLink.
+
+## Branching
+
+- `development` is the working branch: branch from it and open pull requests into it. Never commit or open a pull request directly against `main`.
+- `main` is the release branch. Every push to `main` runs `release.yml`, which publishes the package to nuget.org and creates a GitHub release, so only merge `development` into `main` when a release is intended, and only when asked to release.
+
+## CI
+
+GitHub Actions (`.github/workflows/`) on `windows-latest`:
+
+- `ci.yml` builds Release and runs the tests for pull requests into `main` and `development`; it publishes nothing.
+- `release.yml` runs on every push to `main` (changes only to Markdown or workflow files are skipped; run it by hand to test a workflow change). It builds Release as `2.0.<yyMM>.<run number>` plus `RELEASE_SUFFIX` (empty for a stable version), runs the tests, pushes `DSoft.Gravatar.Mobile` to nuget.org with Trusted Publishing (OIDC, `NUGET_USER` secret, `nuget` environment), then tags the commit `v<version>` and creates a GitHub release with the package attached.
