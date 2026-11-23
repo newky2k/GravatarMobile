@@ -5,6 +5,7 @@ using UIKit;
 using Foundation;
 using CoreAnimation;
 using CoreGraphics;
+using ObjCRuntime;
 
 namespace GravatarMobile
 {
@@ -47,11 +48,11 @@ namespace GravatarMobile
             }
         }
 
-		[Export("BorderWidth"), Browsable(true), DisplayNameAttribute("Border Width")]
         /// <summary>
         /// Gets or sets the width of the border.
         /// </summary>
         /// <value>The width of the border.</value>
+		[Export("BorderWidth"), Browsable(true), DisplayNameAttribute("Border Width")]
         public float BorderWidth
         {
             get { return mBorderWidth; }
@@ -66,11 +67,11 @@ namespace GravatarMobile
         }
 			
 
-		[Export("ViewStyle"), Browsable(true), DisplayNameAttribute("Intial View Style")]
         /// <summary>
         /// Gets or sets the view style.
         /// </summary>
         /// <value>The view style.</value>
+		[Export("ViewStyle"), Browsable(true), DisplayNameAttribute("Intial View Style")]
         public GravatarViewStyle ViewStyle
         {
             get
@@ -118,7 +119,7 @@ namespace GravatarMobile
         #region Constructors
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="GravatarMobile.iOS.GravatarView"/> class.
+        /// Initializes a new instance of the <see cref="GravatarView"/> class.
         /// </summary>
         /// <param name="Frame">Frame.</param>
         public GravatarView(CGRect Frame) : base(Frame)
@@ -127,7 +128,7 @@ namespace GravatarMobile
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="GravatarMobile.iOS.GravatarView"/> class.
+        /// Initializes a new instance of the <see cref="GravatarView"/> class.
         /// </summary>
         public GravatarView()
         {
@@ -135,7 +136,7 @@ namespace GravatarMobile
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="GravatarMobile.iOS.GravatarView"/> class.
+        /// Initializes a new instance of the <see cref="GravatarView"/> class.
         /// </summary>
         /// <param name="Coder">Coder.</param>
         public GravatarView(NSCoder Coder) : base(Coder)
@@ -144,7 +145,7 @@ namespace GravatarMobile
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="GravatarMobile.iOS.GravatarView"/> class.
+        /// Initializes a new instance of the <see cref="GravatarView"/> class.
         /// </summary>
         /// <param name="t">T.</param>
         public GravatarView(NSObjectFlag t) : base(t)
@@ -153,7 +154,7 @@ namespace GravatarMobile
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="GravatarMobile.iOS.GravatarView"/> class.
+        /// Initializes a new instance of the <see cref="GravatarView"/> class.
         /// </summary>
         /// <param name="Handle">Handle.</param>
         public GravatarView(NativeHandle Handle) : base(Handle)
@@ -192,15 +193,19 @@ namespace GravatarMobile
                 var scale = (this.TraitCollection.DisplayScale > 0) ? this.TraitCollection.DisplayScale : 2;
                 var size = (this.Bounds.Size.Width > 80) ? this.Bounds.Size.Width : 80;
 
-                size = size * scale;
-
-                await item.LoadImageAsync((int)size);
+                // fetch the image for this view's size, so it is not replaced by an image the Gravatar loaded at another size
+                var data = await GravatarControl.GetImage(item.Hash, (int)(size * scale));
 
                 BeginInvokeOnMainThread(() =>
                 {
                     // ignore the result if the avatar was replaced while loading
-                    if (item == mItem)
-                        mImageView.Image = item.ImageAsUIImage(scale);
+                    if (item != mItem)
+                        return;
+
+                    using (var nsData = NSData.FromArray(data))
+                    {
+                        mImageView.Image = UIImage.LoadFromData(nsData, scale);
+                    }
                 });
             }
             catch (Exception)

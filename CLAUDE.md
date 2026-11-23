@@ -24,6 +24,7 @@ dotnet test GravatarMobile.Tests/GravatarMobile.Tests.csproj -c Release
 - `EnableWindowsTargeting` is on so the Windows targets compile on Linux. `WPFSample` compiles there but only runs on Windows.
 - `MD5` is a thin wrapper over `System.Security.Cryptography.MD5` (Gravatar identifies accounts by MD5); it is not used for security.
 - Assemblies are strong-name signed with `GravatarMobile/DSoft.snk`; do not remove it.
+- Use `dotnet build`, not `dotnet pack`: with `GeneratePackageOnBuild=true`, a plain `dotnet pack` on a clean tree fails with NU5026 because it packs before building. `dotnet pack -p:GeneratePackageOnBuild=false` also works.
 - `GeneratePackageOnBuild=true`, so every build produces `DSoft.Gravatar.Mobile.<version>.nupkg` (with `README.md` and `DSIcon.png`). Release builds add SourceLink.
 
 ## Branching
