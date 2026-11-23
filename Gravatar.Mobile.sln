@@ -9,6 +9,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{DCB6
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFSample", "WPFSample\WPFSample.csproj", "{735DA913-AF91-49A6-9AE8-BC09F9FDE386}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GravatarMobile.Tests", "GravatarMobile.Tests\GravatarMobile.Tests.csproj", "{49FB5085-0F55-4494-AC97-CAC4A5EF9FB3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,6 +55,22 @@ Global
 		{735DA913-AF91-49A6-9AE8-BC09F9FDE386}.Release|x64.Build.0 = Release|Any CPU
 		{735DA913-AF91-49A6-9AE8-BC09F9FDE386}.Release|x86.ActiveCfg = Release|Any CPU
 		{735DA913-AF91-49A6-9AE8-BC09F9FDE386}.Release|x86.Build.0 = Release|Any CPU
+		{49FB5085-0F55-4494-AC97-CAC4A5EF9FB3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49FB5085-0F55-4494-AC97-CAC4A5EF9FB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49FB5085-0F55-4494-AC97-CAC4A5EF9FB3}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{49FB5085-0F55-4494-AC97-CAC4A5EF9FB3}.Debug|ARM.Build.0 = Debug|Any CPU
+		{49FB5085-0F55-4494-AC97-CAC4A5EF9FB3}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{49FB5085-0F55-4494-AC97-CAC4A5EF9FB3}.Debug|x64.Build.0 = Debug|Any CPU
+		{49FB5085-0F55-4494-AC97-CAC4A5EF9FB3}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{49FB5085-0F55-4494-AC97-CAC4A5EF9FB3}.Debug|x86.Build.0 = Debug|Any CPU
+		{49FB5085-0F55-4494-AC97-CAC4A5EF9FB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49FB5085-0F55-4494-AC97-CAC4A5EF9FB3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{49FB5085-0F55-4494-AC97-CAC4A5EF9FB3}.Release|ARM.ActiveCfg = Release|Any CPU
+		{49FB5085-0F55-4494-AC97-CAC4A5EF9FB3}.Release|ARM.Build.0 = Release|Any CPU
+		{49FB5085-0F55-4494-AC97-CAC4A5EF9FB3}.Release|x64.ActiveCfg = Release|Any CPU
+		{49FB5085-0F55-4494-AC97-CAC4A5EF9FB3}.Release|x64.Build.0 = Release|Any CPU
+		{49FB5085-0F55-4494-AC97-CAC4A5EF9FB3}.Release|x86.ActiveCfg = Release|Any CPU
+		{49FB5085-0F55-4494-AC97-CAC4A5EF9FB3}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
