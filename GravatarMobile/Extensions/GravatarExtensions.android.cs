@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Android.Graphics.Drawables;
 using Android.Graphics;
 
@@ -16,7 +16,7 @@ namespace GravatarMobile
 			//Item.ImageAsStream
 			var bm = BitmapFactory.DecodeStream(Item.ImageAsStream,null, null);
 
-			return new BitmapDrawable(bm);
+			return new BitmapDrawable(Android.App.Application.Context.Resources, bm);
 		}
 
 		/// <summary>

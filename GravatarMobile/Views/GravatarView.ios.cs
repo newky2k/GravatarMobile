@@ -1,5 +1,4 @@
-﻿using System;
-using System.Drawing;
+using System;
 using System.ComponentModel;
 
 using UIKit;
@@ -122,7 +121,7 @@ namespace GravatarMobile
         /// Initializes a new instance of the <see cref="GravatarMobile.iOS.GravatarView"/> class.
         /// </summary>
         /// <param name="Frame">Frame.</param>
-        public GravatarView(RectangleF Frame) : base(Frame)
+        public GravatarView(CGRect Frame) : base(Frame)
         {
             Prepare();
         }
@@ -157,7 +156,7 @@ namespace GravatarMobile
         /// Initializes a new instance of the <see cref="GravatarMobile.iOS.GravatarView"/> class.
         /// </summary>
         /// <param name="Handle">Handle.</param>
-        public GravatarView(IntPtr Handle) : base(Handle)
+        public GravatarView(NativeHandle Handle) : base(Handle)
         {
             Prepare();
         }
@@ -171,7 +170,7 @@ namespace GravatarMobile
         /// </summary>
         private void Prepare()
         {
-            mImageView = new UIImageView(RectangleF.Empty);
+            mImageView = new UIImageView(CGRect.Empty);
             mImageView.AutoresizingMask = UIViewAutoresizing.FlexibleHeight | UIViewAutoresizing.FlexibleWidth;
             mImageView.AutosizesSubviews = true;
 
@@ -180,17 +179,34 @@ namespace GravatarMobile
 
         private async void LoadImage()
         {
-            var size = (this.Frame.Size.Width > 80) ? this.Frame.Size.Width : 80;
+            var item = mItem;
 
-            size = size * UIScreen.MainScreen.Scale;
-            
-			await mItem.LoadImageAsync((int)size);
-
-            BeginInvokeOnMainThread(() =>
+            if (item == null)
             {
-                mImageView.Image = mItem.ImageAsUIImage();
-            });
+                mImageView.Image = null;
+                return;
+            }
 
+            try
+            {
+                var scale = (this.TraitCollection.DisplayScale > 0) ? this.TraitCollection.DisplayScale : 2;
+                var size = (this.Bounds.Size.Width > 80) ? this.Bounds.Size.Width : 80;
+
+                size = size * scale;
+
+                await item.LoadImageAsync((int)size);
+
+                BeginInvokeOnMainThread(() =>
+                {
+                    // ignore the result if the avatar was replaced while loading
+                    if (item == mItem)
+                        mImageView.Image = item.ImageAsUIImage(scale);
+                });
+            }
+            catch (Exception)
+            {
+                // the image could not be loaded, leave the view as it is
+            }
         }
 
         #endregion
@@ -207,7 +223,7 @@ namespace GravatarMobile
 
             mImageView.Frame = this.Bounds;
 
-            AddMask(this.Frame);
+            AddMask(this.Bounds);
         }
 
         /// <summary>

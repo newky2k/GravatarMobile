@@ -10,15 +10,13 @@ A small .NET library for [Gravatar](https://gravatar.com): load the avatar image
 * Gravatar public profiles (name, about me, location, links, accounts, photos and more)
 * No dependencies
 * Targets .NET Standard 2.0, .NET 10 and .NET 11, plus `net10.0-windows` and `net11.0-windows` with WPF helpers
+* Native `GravatarView` controls for .NET iOS and .NET Android (`net10.0-ios`, `net11.0-ios`, `net10.0-android`, `net11.0-android`), square or round, with an optional border on iOS
 
 ## Status
 
-This is the platform-neutral core, rewritten for modern .NET. The native views are being ported and will follow as separate releases:
+The core and the native iOS and Android views are on .NET 10 and .NET 11. A .NET MAUI view built from the native views will follow.
 
-* iOS and Android `GravatarView` controls on .NET 10 and .NET 11
-* A .NET MAUI view built from the native views
-
-The old Xamarin, UWP and Mac Catalyst code is still in the repository but is not built or packaged yet.
+The old Xamarin, UWP and Mac code is still in the repository but is not built or packaged.
 
 ## Install
 
@@ -48,6 +46,17 @@ On Windows (`net10.0-windows` and `net11.0-windows`) the `ImageAsBitmap()` and `
 imgGravatar.Source = gravatar.ImageAsBitmap();
 ```
 
+### Native views
+
+On .NET iOS and .NET Android, `GravatarView` shows a Gravatar and loads the image for you:
+
+```csharp
+var view = new GravatarView { ViewStyle = GravatarViewStyle.Round };   // Square or Round
+view.Avatar = new Gravatar("someone@example.com");
+```
+
+On iOS, `BorderWidth` and `BorderColor` add a border. On Android, `app:initial_style="round"` in a layout sets the style. The `ImageAsUIImage()` (iOS) and `ImageAsBitmap()` and `ImageAsDrawable()` (Android) extensions give the platform image.
+
 `gravatar.Hash` is the lower case MD5 hash of the trimmed, lower cased email address that Gravatar uses to identify an account.
 
 ## Build
@@ -57,7 +66,7 @@ dotnet build Gravatar.Mobile.sln -c Release
 dotnet test GravatarMobile.Tests/GravatarMobile.Tests.csproj -c Release
 ```
 
-Build with the .NET 10 and .NET 11 SDKs. `WPFSample` is a small WPF app that loads an avatar and profile for an email address; it runs on Windows only.
+Build with the .NET 10 and .NET 11 SDKs. The iOS and Android targets need `dotnet workload restore GravatarMobile/GravatarMobile.csproj` and are not built on Linux. `WPFSample` is a small WPF app that loads an avatar and profile for an email address; it runs on Windows only.
 
 ## License
 

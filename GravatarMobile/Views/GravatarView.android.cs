@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -60,10 +60,7 @@ namespace GravatarMobile
 				{
 					mStyle = value;
 
-					var bm =(mStyle == GravatarViewStyle.Round) ? 
-						GetOvalBitmap(mItem.ImageAsBitmap()) : mItem.ImageAsBitmap();
-
-					this.SetImageDrawable(new BitmapDrawable(bm));
+					ShowImage(mItem);
 
 					this.Invalidate();
 				}
@@ -81,9 +78,11 @@ namespace GravatarMobile
 		public GravatarView(Context context, IAttributeSet attrs) :
 			base(context, attrs)
 		{
-			Android.Content.Res.TypedArray a = context.Theme.ObtainStyledAttributes(attrs, Resource.Styleable.GravatarView, 0, 0);
-			int dayStyle = a.GetInteger(Resource.Styleable.GravatarView_initial_style,0);
-			mStyle = (GravatarViewStyle)dayStyle;
+			// app:initial_style="square|round" (see Resources/values/attrs.xml)
+			var initialStyle = attrs?.GetAttributeValue("http://schemas.android.com/apk/res-auto", "initial_style");
+
+			if (string.Equals(initialStyle, "round", StringComparison.OrdinalIgnoreCase) || initialStyle == "1")
+				mStyle = GravatarViewStyle.Round;
 
 			Initialize();
 		}
@@ -108,22 +107,54 @@ namespace GravatarMobile
 		/// </summary>
 		private async void LoadImageAsync()
 		{
+			var item = mItem;
 
-			var size = (this.Width > 80) ? this.Width : 80;
-		
-
-			await mItem.LoadImageAsync((int)size);
-
-			this.Post(()=>
+			if (item == null)
 			{
-				//mBitmap = mItem.ImageAsBitmap();
-				var bm =(mStyle == GravatarViewStyle.Round) ? 
-					GetOvalBitmap(mItem.ImageAsBitmap()) : mItem.ImageAsBitmap();
+				this.SetImageBitmap(null);
+				return;
+			}
 
-				this.SetImageDrawable(new BitmapDrawable(bm));
+			try
+			{
+				var size = (this.Width > 80) ? this.Width : 80;
 
-			});
+				await item.LoadImageAsync(size);
 
+				this.Post(() =>
+				{
+					// ignore the result if the avatar was replaced while loading
+					if (item == mItem)
+						ShowImage(item);
+				});
+			}
+			catch (Exception)
+			{
+				// the image could not be loaded, leave the view as it is
+			}
+		}
+
+		/// <summary>
+		/// Shows the loaded image of the Gravatar, in the current style.
+		/// </summary>
+		private void ShowImage(Gravatar item)
+		{
+			if (item == null)
+				return;
+
+			Bitmap bm;
+
+			try
+			{
+				bm = item.ImageAsBitmap();
+			}
+			catch (Exception)
+			{
+				// the image has not been loaded yet
+				return;
+			}
+
+			this.SetImageBitmap((mStyle == GravatarViewStyle.Round) ? GetOvalBitmap(bm) : bm);
 		}
 
 		/// <summary>
