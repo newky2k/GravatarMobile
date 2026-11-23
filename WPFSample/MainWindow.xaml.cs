@@ -27,8 +27,17 @@ namespace WPFSample
                 imgGravatar.Source = gravatar.ImageAsBitmap();
 
                 await gravatar.LoadProfileAsync();
-                lblName.Text = gravatar.Profile?.DisplayName ?? string.Empty;
-                lblStatus.Text = gravatar.Profile == null ? "No profile" : "Loaded";
+
+                // Profile throws when there is no public profile for the address
+                try
+                {
+                    lblName.Text = gravatar.Profile?.DisplayName ?? string.Empty;
+                    lblStatus.Text = "Loaded";
+                }
+                catch (System.Exception)
+                {
+                    lblStatus.Text = "No profile";
+                }
             }
             catch (System.Exception ex)
             {
