@@ -8,7 +8,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 1. **Core (done):** `GravatarMobile/GravatarMobile.csproj` builds only the platform-neutral `*.shared.cs` files, targeting `netstandard2.0;net10.0;net11.0` plus `net10.0-windows;net11.0-windows` (and the android and ios targets on non-Linux hosts) (WPF `ImageAsBitmap` extensions in `GravatarExtensions.netf.netcore.cs`).
 2. **Native views (ported, needs device verification):** `GravatarView.android.cs` / `.ios.cs` and their extensions build for `net10.0-android`, `net11.0-android`, `net10.0-ios` and `net11.0-ios` (not on Linux: they need the workloads). `.mac.cs` and `.uwp.cs` are in the tree but not compiled.
-3. **MAUI views (todo):** a MAUI control built from the native views.
+3. **MAUI view (written, needs build and device verification):** `GravatarMobile.Maui/` is the separate package `DSoft.Gravatar.Mobile.Maui`: a cross-platform `ContentView` (`GravatarMobile.Maui.GravatarView`, Image inside a Border) for `net10.0`/`net11.0` android, ios, maccatalyst and windows (Windows only on Windows hosts), referencing the core project. It cannot be built on Linux (maui workloads). Released together with the core, same version.
 
 The old Xamarin and UWP samples under `samples/` are legacy and not in the solution.
 
@@ -19,6 +19,7 @@ dotnet build Gravatar.Mobile.sln -c Release
 dotnet test GravatarMobile.Tests/GravatarMobile.Tests.csproj -c Release
 ```
 
+- On Linux build the core and tests only (`dotnet build GravatarMobile/GravatarMobile.csproj`, `dotnet test GravatarMobile.Tests/...`); the solution includes the MAUI project, which needs the maui workloads.
 - `GravatarMobile.Tests` (xunit, `net10.0;net11.0`) covers the hashing and the argument checks. There are no network tests.
 - Android minimum API is 21 for net10 and 24 for net11, iOS minimum is 15.0. The Android `initial_style` attribute is read from the layout without the generated `Resource` class.
 - `EnableWindowsTargeting` is on so the Windows targets compile on Linux. `WPFSample` compiles there but only runs on Windows.

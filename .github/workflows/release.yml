@@ -1,5 +1,5 @@
-# Release: on every push to main, builds Release, runs the tests and pushes the DSoft.Gravatar.Mobile
-# package to nuget.org as 2.0.yyMM.<run number>, then tags the commit and
+# Release: on every push to main, builds Release, runs the tests and pushes the DSoft.Gravatar.Mobile and
+# DSoft.Gravatar.Mobile.Maui packages to nuget.org as 2.0.yyMM.<run number>, then tags the commit and
 # creates a GitHub release with the packages attached.
 # RELEASE_SUFFIX is empty for a stable version; set it to a suffix such as
 # '-prerelease' to publish a prerelease.
@@ -50,7 +50,9 @@ jobs:
           echo "Version: $version$RELEASE_SUFFIX"
 
       - name: Install workloads
-        run: dotnet workload restore GravatarMobile/GravatarMobile.csproj
+        run: |
+          dotnet workload restore GravatarMobile/GravatarMobile.csproj
+          dotnet workload restore GravatarMobile.Maui/GravatarMobile.Maui.csproj
 
       - name: Restore
         run: dotnet restore Gravatar.Mobile.sln
@@ -69,7 +71,7 @@ jobs:
         shell: bash
         run: |
           mkdir -p artifacts
-          find GravatarMobile -path '*/bin/Release/*' -name 'DSoft.Gravatar.Mobile*.nupkg' -exec cp {} artifacts/ \;
+          find GravatarMobile GravatarMobile.Maui -path '*/bin/Release/*' -name 'DSoft.Gravatar.Mobile*.nupkg' -exec cp {} artifacts/ \;
           ls artifacts
 
       - uses: actions/upload-artifact@v7

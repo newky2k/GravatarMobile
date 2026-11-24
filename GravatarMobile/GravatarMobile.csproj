@@ -28,7 +28,7 @@
 		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
 		<PackageId>DSoft.Gravatar.Mobile</PackageId>
 		<PackageTags>gravatar</PackageTags>
-		<PackageReleaseNotes>Core for .NET Standard 2.0, .NET 10 and .NET 11, with native GravatarView controls for .NET iOS and .NET Android. A MAUI view will follow.</PackageReleaseNotes>
+		<PackageReleaseNotes>Core for .NET Standard 2.0, .NET 10 and .NET 11, with native GravatarView controls for .NET iOS and .NET Android.</PackageReleaseNotes>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<PackageIcon>DSIcon.png</PackageIcon>
 	</PropertyGroup>

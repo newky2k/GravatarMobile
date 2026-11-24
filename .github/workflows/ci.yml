@@ -26,7 +26,9 @@ jobs:
             11.x
 
       - name: Install workloads
-        run: dotnet workload restore GravatarMobile/GravatarMobile.csproj
+        run: |
+          dotnet workload restore GravatarMobile/GravatarMobile.csproj
+          dotnet workload restore GravatarMobile.Maui/GravatarMobile.Maui.csproj
 
       - name: Restore
         run: dotnet restore Gravatar.Mobile.sln
