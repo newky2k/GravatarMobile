@@ -15,6 +15,7 @@ namespace GravatarMobile.Maui
     {
         private const int kDefaultSize = 80;
 
+        private readonly Border mClip;
         private readonly Border mBorder;
         private readonly Image mImage;
         private int mRequestedSize;
@@ -84,8 +85,17 @@ namespace GravatarMobile.Maui
         public GravatarView()
         {
             mImage = new Image { Aspect = Aspect.AspectFill };
-            mBorder = new Border { Content = mImage, Padding = 0, StrokeThickness = 0 };
-            Content = mBorder;
+
+            // The image is clipped by a border with no stroke, and the stroke is drawn by a second border on top,
+            // so the stroke overlaps the edge of the image. A single stroked border insets its content, which
+            // leaves a visible gap between the stroke and the image on Android.
+            mClip = new Border { Content = mImage, Padding = 0, StrokeThickness = 0 };
+            mBorder = new Border { Padding = 0, Background = Colors.Transparent, InputTransparent = true };
+
+            var grid = new Grid();
+            grid.Add(mClip);
+            grid.Add(mBorder);
+            Content = grid;
             UpdateShape();
         }
 
@@ -105,6 +115,11 @@ namespace GravatarMobile.Maui
         private void OnAvatarChanged()
         {
             mRequestedSize = 0;
+
+            // Before the first layout the size is unknown; OnSizeAllocated loads at the real size.
+            if (Avatar != null && (Width <= 0 || Height <= 0))
+                return;
+
             _ = LoadImageAsync();
         }
 
@@ -112,8 +127,6 @@ namespace GravatarMobile.Maui
         protected override void OnSizeAllocated(double width, double height)
         {
             base.OnSizeAllocated(width, height);
-
-            UpdateShape();
 
             if (Avatar == null || width <= 0 || height <= 0)
                 return;
@@ -169,14 +182,9 @@ namespace GravatarMobile.Maui
             mBorder.StrokeThickness = BorderWidth;
             mBorder.Stroke = new SolidColorBrush(BorderColor ?? Colors.Black);
 
-            if (ViewStyle == GravatarViewStyle.Round)
-            {
-                mBorder.StrokeShape = new Ellipse();
-            }
-            else
-            {
-                mBorder.StrokeShape = new Rectangle();
-            }
+            var round = ViewStyle == GravatarViewStyle.Round;
+            mClip.StrokeShape = round ? new Ellipse() : new Rectangle();
+            mBorder.StrokeShape = round ? new Ellipse() : new Rectangle();
         }
     }
 }

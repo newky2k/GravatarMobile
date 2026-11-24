@@ -36,6 +36,8 @@ dotnet add package DSoft.Gravatar.Mobile.Maui   # the .NET MAUI view
 </ContentPage>
 ```
 
+On iOS and Android the core package also has a native `GravatarMobile.GravatarView`, so code that has both `using GravatarMobile;` and `using GravatarMobile.Maui;` must qualify the name. XAML with `clr-namespace` is not affected.
+
 `Email` (or `Avatar`), `ViewStyle` (`Square` or `Round`), `BorderWidth` and `BorderColor` are bindable properties. The image is requested at the view's pixel size.
 
 ## Usage
