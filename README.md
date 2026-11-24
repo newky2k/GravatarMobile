@@ -10,11 +10,12 @@ A small .NET library for [Gravatar](https://gravatar.com): load the avatar image
 * Gravatar public profiles (name, about me, location, links, accounts, photos and more)
 * No dependencies
 * Targets .NET Standard 2.0, .NET 10 and .NET 11, plus `net10.0-windows` and `net11.0-windows` with WPF helpers
+* A .NET MAUI `GravatarView` in the separate `DSoft.Gravatar.Mobile.Maui` package (Android, iOS, Mac Catalyst and Windows, .NET 10 and .NET 11)
 * Native `GravatarView` controls for .NET iOS and .NET Android (`net10.0-ios`, `net11.0-ios`, `net10.0-android`, `net11.0-android`), square or round, with an optional border on iOS
 
 ## Status
 
-The core and the native iOS and Android views are on .NET 10 and .NET 11. A .NET MAUI view built from the native views will follow.
+The core, the native iOS and Android views and the .NET MAUI view are on .NET 10 and .NET 11.
 
 The old Xamarin, UWP and Mac code is still in the repository but is not built or packaged.
 
@@ -22,7 +23,20 @@ The old Xamarin, UWP and Mac code is still in the repository but is not built or
 
 ```
 dotnet add package DSoft.Gravatar.Mobile
+dotnet add package DSoft.Gravatar.Mobile.Maui   # the .NET MAUI view
 ```
+
+## .NET MAUI
+
+```xml
+<ContentPage xmlns:gravatar="clr-namespace:GravatarMobile.Maui;assembly=GravatarMobile.Maui">
+    <gravatar:GravatarView Email="someone@example.com" ViewStyle="Round"
+                           BorderWidth="2" BorderColor="Gray"
+                           WidthRequest="96" HeightRequest="96" />
+</ContentPage>
+```
+
+`Email` (or `Avatar`), `ViewStyle` (`Square` or `Round`), `BorderWidth` and `BorderColor` are bindable properties. The image is requested at the view's pixel size.
 
 ## Usage
 
