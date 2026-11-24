@@ -2,6 +2,8 @@
 
 	<PropertyGroup>
 		<TargetFrameworks>netstandard2.0;net10.0;net11.0;net10.0-windows;net11.0-windows</TargetFrameworks>
+		<!-- The android and ios targets need the .NET workloads (dotnet workload restore) and are not built on Linux -->
+		<TargetFrameworks Condition="!$([MSBuild]::IsOSPlatform('linux'))">$(TargetFrameworks);net10.0-android;net11.0-android;net10.0-ios;net11.0-ios</TargetFrameworks>
 		<LangVersion>Latest</LangVersion>
 		<EnableDefaultCompileItems>false</EnableDefaultCompileItems>
 		<Product>$(AssemblyName) ($(TargetFramework))</Product>
@@ -19,14 +21,14 @@
 		<Version>2.0.0</Version>
 		<AssemblyVersion>2.0.0.0</AssemblyVersion>
 		<FileVersion>2.0.0.0</FileVersion>
-		<Description>.NET API for Gravatar with support for images and profiles. Targets .NET Standard 2.0, .NET 10 and .NET 11, with WPF helpers for Windows.</Description>
+		<Description>.NET API for Gravatar with support for images and profiles. Targets .NET Standard 2.0, .NET 10 and .NET 11, with WPF helpers for Windows and native GravatarView controls for .NET iOS and .NET Android.</Description>
 		<Authors>newky2k</Authors>
 		<Copyright>Copyright © 2026 DSoft</Copyright>
 		<PackageProjectUrl>https://github.com/newky2k/GravatarMobile</PackageProjectUrl>
 		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
 		<PackageId>DSoft.Gravatar.Mobile</PackageId>
 		<PackageTags>gravatar</PackageTags>
-		<PackageReleaseNotes>Rewritten core for .NET Standard 2.0, .NET 10 and .NET 11. Native iOS, Android and MAUI views will follow.</PackageReleaseNotes>
+		<PackageReleaseNotes>Core for .NET Standard 2.0, .NET 10 and .NET 11, with native GravatarView controls for .NET iOS and .NET Android. A MAUI view will follow.</PackageReleaseNotes>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<PackageIcon>DSIcon.png</PackageIcon>
 	</PropertyGroup>
@@ -57,10 +59,25 @@
 		<ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
 	</PropertyGroup>
 
-	<!-- Platform neutral code. The iOS, Android, Mac and UWP sources (*.ios.cs, *.android.cs, *.mac.cs, *.uwp.cs) are not built until the native view packages are ported. -->
+	<!-- Platform neutral code, plus the per-platform sources above. The Mac and UWP sources (*.mac.cs, *.uwp.cs) are not built. -->
 	<ItemGroup>
 		<Compile Include="**\*.shared.cs" />
 		<Compile Include="**\*.shared.*.cs" />
+	</ItemGroup>
+
+	<PropertyGroup>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">15.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android' And $(TargetFramework.StartsWith('net10.0'))">21.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android' And $(TargetFramework.StartsWith('net11.0'))">24.0</SupportedOSPlatformVersion>
+	</PropertyGroup>
+
+	<ItemGroup Condition=" $([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android' ">
+		<Compile Include="**\*.android.cs" />
+		<AndroidResource Include="Resources\values\*.xml" />
+	</ItemGroup>
+
+	<ItemGroup Condition=" $([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios' ">
+		<Compile Include="**\*.ios.cs" />
 	</ItemGroup>
 
 	<PropertyGroup Condition=" $(TargetFramework.Contains('-windows')) ">

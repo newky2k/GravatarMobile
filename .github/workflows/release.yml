@@ -49,6 +49,9 @@ jobs:
           echo "package=$version$RELEASE_SUFFIX" >> "$GITHUB_OUTPUT"
           echo "Version: $version$RELEASE_SUFFIX"
 
+      - name: Install workloads
+        run: dotnet workload restore GravatarMobile/GravatarMobile.csproj
+
       - name: Restore
         run: dotnet restore Gravatar.Mobile.sln
 

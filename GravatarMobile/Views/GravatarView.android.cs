@@ -1,16 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Android.App;
+using System;
 using Android.Content;
-using Android.OS;
-using Android.Runtime;
 using Android.Util;
-using Android.Views;
 using Android.Widget;
 using Android.Graphics;
-using Android.Graphics.Drawables;
 
 namespace GravatarMobile
 {
@@ -23,8 +15,17 @@ namespace GravatarMobile
 
 		private Gravatar mItem;
 		private GravatarViewStyle mStyle = GravatarViewStyle.Square;
+		private Bitmap mBitmap;
+		private int mLoadedSize;
+
 		#endregion
+
 		#region Properties
+
+		/// <summary>
+		/// Gets or sets the Gravatar item.
+		/// </summary>
+		/// <value>The item.</value>
 		public Gravatar Avatar
 		{
 			get
@@ -36,10 +37,10 @@ namespace GravatarMobile
 				if (mItem != value)
 				{
 					mItem = value;
+					mBitmap = null;
+					mLoadedSize = 0;
 
 					LoadImageAsync();
-
-
 				}
 			}
 		}
@@ -60,43 +61,32 @@ namespace GravatarMobile
 				{
 					mStyle = value;
 
-					var bm =(mStyle == GravatarViewStyle.Round) ? 
-						GetOvalBitmap(mItem.ImageAsBitmap()) : mItem.ImageAsBitmap();
-
-					this.SetImageDrawable(new BitmapDrawable(bm));
+					ShowImage();
 
 					this.Invalidate();
 				}
 			}
 		}
+
 		#endregion
 
 		#region Constructors
+
 		public GravatarView(Context context) :
 			base(context)
 		{
-			Initialize();
 		}
 
 		public GravatarView(Context context, IAttributeSet attrs) :
 			base(context, attrs)
 		{
-			Android.Content.Res.TypedArray a = context.Theme.ObtainStyledAttributes(attrs, Resource.Styleable.GravatarView, 0, 0);
-			int dayStyle = a.GetInteger(Resource.Styleable.GravatarView_initial_style,0);
-			mStyle = (GravatarViewStyle)dayStyle;
-
-			Initialize();
+			ReadStyle(attrs);
 		}
 
 		public GravatarView(Context context, IAttributeSet attrs, int defStyle) :
 			base(context, attrs, defStyle)
 		{
-			Initialize();
-		}
-
-		private void Initialize ()
-		{
-
+			ReadStyle(attrs);
 		}
 
 		#endregion
@@ -104,26 +94,87 @@ namespace GravatarMobile
 		#region Methods
 
 		/// <summary>
+		/// Reads app:initial_style="square|round" from the layout (see Resources/values/attrs.xml).
+		/// </summary>
+		private void ReadStyle(IAttributeSet attrs)
+		{
+			var initialStyle = attrs?.GetAttributeValue("http://schemas.android.com/apk/res-auto", "initial_style");
+
+			if (string.Equals(initialStyle, "round", StringComparison.OrdinalIgnoreCase) || initialStyle == "1")
+				mStyle = GravatarViewStyle.Round;
+		}
+
+		/// <summary>
+		/// Gets the size in pixels to request the image at: the view's width, or the width from its layout parameters before it has been laid out.
+		/// </summary>
+		private int GetImageSize()
+		{
+			var size = this.Width;
+
+			if (size <= 0 && this.LayoutParameters != null && this.LayoutParameters.Width > 0)
+				size = this.LayoutParameters.Width;
+
+			return (size > 80) ? size : 80;
+		}
+
+		/// <summary>
 		/// Loads the image async.
 		/// </summary>
 		private async void LoadImageAsync()
 		{
+			var item = mItem;
 
-			var size = (this.Width > 80) ? this.Width : 80;
-		
-
-			await mItem.LoadImageAsync((int)size);
-
-			this.Post(()=>
+			if (item == null)
 			{
-				//mBitmap = mItem.ImageAsBitmap();
-				var bm =(mStyle == GravatarViewStyle.Round) ? 
-					GetOvalBitmap(mItem.ImageAsBitmap()) : mItem.ImageAsBitmap();
+				this.SetImageBitmap(null);
+				return;
+			}
 
-				this.SetImageDrawable(new BitmapDrawable(bm));
+			try
+			{
+				var size = GetImageSize();
+				mLoadedSize = size;
 
-			});
+				// fetch the image for this view's size, so it is not replaced by an image the Gravatar loaded at another size
+				var data = await GravatarControl.GetImage(item.Hash, size);
+				var bitmap = BitmapFactory.DecodeByteArray(data, 0, data.Length);
 
+				this.Post(() =>
+				{
+					// ignore the result if the avatar was replaced while loading
+					if (item != mItem)
+						return;
+
+					mBitmap = bitmap;
+					ShowImage();
+				});
+			}
+			catch (Exception)
+			{
+				// the image could not be loaded, leave the view as it is
+			}
+		}
+
+		/// <summary>
+		/// Shows the loaded image, in the current style.
+		/// </summary>
+		private void ShowImage()
+		{
+			if (mBitmap == null)
+				return;
+
+			this.SetImageBitmap((mStyle == GravatarViewStyle.Round) ? GetOvalBitmap(mBitmap) : mBitmap);
+		}
+
+		/// <summary>
+		/// Reloads the image at a better resolution once the view has been laid out and is bigger than the size it was loaded at.
+		/// </summary>
+		protected override void OnSizeChanged(int w, int h, int oldw, int oldh)
+		{
+			base.OnSizeChanged(w, h, oldw, oldh);
+
+			if (mItem != null && w > mLoadedSize && w > 80)
+				LoadImageAsync();
 		}
 
 		/// <summary>
@@ -131,11 +182,11 @@ namespace GravatarMobile
 		/// </summary>
 		/// <returns>The oval bitmap.</returns>
 		/// <param name="bitmap">Bitmap.</param>
-		private Bitmap GetOvalBitmap(Bitmap bitmap) 
+		private Bitmap GetOvalBitmap(Bitmap bitmap)
 		{
 			Bitmap output = null;
 
-			if(bitmap != null)
+			if (bitmap != null)
 			{
 				output = Bitmap.CreateBitmap(bitmap.Width, bitmap.Height, Bitmap.Config.Argb8888);
 				Canvas canvas = new Canvas(output);
@@ -159,4 +210,3 @@ namespace GravatarMobile
 		#endregion
 	}
 }
-

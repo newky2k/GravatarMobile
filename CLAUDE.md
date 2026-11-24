@@ -6,8 +6,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 `DSoft.Gravatar.Mobile` — a .NET library for Gravatar images and profiles (`Gravatar`, `GravatarControl`, `GravatarProfile`). It is being migrated in stages:
 
-1. **Core (done):** `GravatarMobile/GravatarMobile.csproj` builds only the platform-neutral `*.shared.cs` files, targeting `netstandard2.0;net10.0;net11.0` plus `net10.0-windows;net11.0-windows` (WPF `ImageAsBitmap` extensions in `GravatarExtensions.netf.netcore.cs`).
-2. **Native views (todo):** port `GravatarView.android.cs`, `.ios.cs`, `.mac.cs` and `.uwp.cs` and their extensions to `net10.0` and `net11.0` for android, ios and maccatalyst. These files are in the tree but not compiled.
+1. **Core (done):** `GravatarMobile/GravatarMobile.csproj` builds only the platform-neutral `*.shared.cs` files, targeting `netstandard2.0;net10.0;net11.0` plus `net10.0-windows;net11.0-windows` (and the android and ios targets on non-Linux hosts) (WPF `ImageAsBitmap` extensions in `GravatarExtensions.netf.netcore.cs`).
+2. **Native views (ported, needs device verification):** `GravatarView.android.cs` / `.ios.cs` and their extensions build for `net10.0-android`, `net11.0-android`, `net10.0-ios` and `net11.0-ios` (not on Linux: they need the workloads). `.mac.cs` and `.uwp.cs` are in the tree but not compiled.
 3. **MAUI views (todo):** a MAUI control built from the native views.
 
 The old Xamarin and UWP samples under `samples/` are legacy and not in the solution.
@@ -20,9 +20,11 @@ dotnet test GravatarMobile.Tests/GravatarMobile.Tests.csproj -c Release
 ```
 
 - `GravatarMobile.Tests` (xunit, `net10.0;net11.0`) covers the hashing and the argument checks. There are no network tests.
+- Android minimum API is 21 for net10 and 24 for net11, iOS minimum is 15.0. The Android `initial_style` attribute is read from the layout without the generated `Resource` class.
 - `EnableWindowsTargeting` is on so the Windows targets compile on Linux. `WPFSample` compiles there but only runs on Windows.
 - `MD5` is a thin wrapper over `System.Security.Cryptography.MD5` (Gravatar identifies accounts by MD5); it is not used for security.
 - Assemblies are strong-name signed with `GravatarMobile/DSoft.snk`; do not remove it.
+- Use `dotnet build`, not `dotnet pack`: with `GeneratePackageOnBuild=true`, a plain `dotnet pack` on a clean tree fails with NU5026 because it packs before building. `dotnet pack -p:GeneratePackageOnBuild=false` also works.
 - `GeneratePackageOnBuild=true`, so every build produces `DSoft.Gravatar.Mobile.<version>.nupkg` (with `README.md` and `DSIcon.png`). Release builds add SourceLink.
 
 ## Branching
